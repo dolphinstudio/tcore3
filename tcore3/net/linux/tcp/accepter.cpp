@@ -21,7 +21,7 @@ namespace tcore {
                 || socket_error == listen(sock, 200)) {
             //error(g_core, "socket error %s", strerror(errno));
             close_socket(sock);
-            return false;
+            return nullptr;
         }
 
         accepter * ac = create_from_pool(g_accepter_pool, server, ip, port, s_size, r_size);
