@@ -15,3 +15,8 @@ client端启动参数
 
 server端启动参数
 ./tcoer3 --server --ip=xx.xx.xx.xx --port=xxx ip,port为侦听ip和端口
+
+
+=============================================================
+
+tcore3 wiki建设ing
