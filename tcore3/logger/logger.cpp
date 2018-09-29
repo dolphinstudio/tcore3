@@ -66,7 +66,6 @@ namespace tcore {
 
     void logger::setSyncFilePrefix(const char * prefix) {
         _sync_prefix = prefix;
-        tassert(!_sync_file.IsOpen(), "sync log file created, fuck");
         if (_sync_file.IsOpen()) {
             _sync_file.Close();
         }

@@ -7,7 +7,7 @@ void noderReport(noderSession * session, const char * file, const s32 line) {
 
     g_id_session_map[session->getid()] = session;
     g_name_id_sessions_map[session->getname()].insert(std::make_pair(session->getid(), session));
-    trace(g_core, "noder report to %s area %d id %d %s:%d\n", session->getname().c_str(), session->getarea(), session->getid(), session->getip().c_str(), session->getport());
+    trace(g_core, "noder report to %s area %d id %d %s:%d", session->getname().c_str(), session->getarea(), session->getid(), session->getip().c_str(), session->getport());
 
     g_noder_load_sort_pool_map[session->getname()].push_front(session);
 
@@ -47,7 +47,7 @@ void noderDropout(noderSession * session, const char * file, const s32 line) {
             }
         }
 
-        trace(g_core, "noderDropout to %s area %d id %d %s:%d\n", session->getname().c_str(), session->getarea(), session->getid(), session->getip().c_str(), session->getport());
+        trace(g_core, "noderDropout to %s area %d id %d %s:%d", session->getname().c_str(), session->getarea(), session->getid(), session->getip().c_str(), session->getport());
     }
 
 }

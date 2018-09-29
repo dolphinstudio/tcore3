@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <!--客户端连接配置 
+    send_buff_size单条客户端连接最大消息发送缓冲区大小 单位kb
+    recv_buff_size单条客户端连接最大消息接受缓冲区大小 单位kb
+    任意缓冲区满载立刻断线
+    timeout 超时断开 单位 second
+  -->
+  <door send_buff_size="1" recv_buff_size="1" timeout="10"/>
+</root>
