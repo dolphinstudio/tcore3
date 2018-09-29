@@ -58,7 +58,7 @@ namespace tcore {
         {
             tlib::autolock lock(&s_init_lock);
             index = s_index++;
-            //TraceLog(Core::getInstance(), "http thread %d init", index);
+            //trace(Core::getInstance(), "http thread %d init", index);
         }
 
 

@@ -46,6 +46,62 @@ namespace tools {
             int res = ::mkdir(path, S_IRUSR | S_IWUSR | S_IXUSR);
             return 0 == res;
         }
+
+        bool getfiles(const char * dicpath, const char * extension, OUT opaths & paths, OUT onames & names, OUT s32 & count) {
+            DIR * dp;
+            struct dirent* dirp;
+            struct stat st;
+
+            /* open dirent directory */
+            if ((dp = opendir(dicpath)) == NULL) {
+                perror("opendir");
+                return false;
+            }
+
+            /**
+            * read all files in this dir
+            **/
+            while ((dirp = readdir(dp)) != NULL) {
+                char fullname[255];
+                memset(fullname, 0, sizeof(fullname));
+
+                /* ignore hidden files */
+                if (dirp->d_name[0] == '.')
+                    continue;
+
+                strncpy(fullname, dicpath, sizeof(fullname));
+                strncat(fullname, "/", sizeof(fullname));
+                strncat(fullname, dirp->d_name, sizeof(fullname));
+                /* get dirent status */
+                if (stat(fullname, &st) == -1) {
+                    perror("stat");
+                    fputs(fullname, stderr);
+                    return false;
+                }
+
+                /* if dirent is a directory, call itself */
+                if (S_ISDIR(st.st_mode)) {
+                    if (getfiles(fullname, extension, paths, names, count) == -1) {
+                        return false;
+                    }
+                }
+                else {
+                    /* display file name with proper tab */
+                    //printf("%s/%s\n", dirname, dirp->d_name);
+                    if (strcmp(get_filename_ext(dirp->d_name), extension) == 0) {
+                        paths.push_back(string(dicpath) + "/" + dirp->d_name);
+                        char name[255];
+                        strncpy(name, dirp->d_name, sizeof(name));
+                        char * dot = strrchr(name, '.');
+                        tassert(dot, "wtf");
+                        *dot = 0;
+                        names.push_back(name);
+                        count++;
+                    }
+                }
+            }
+            return true;
+        }
     }
 }
 

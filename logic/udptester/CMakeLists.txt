@@ -8,6 +8,10 @@ SET(udptest
     "${PROJECT_SOURCE_DIR}/logic/udptester/udptester.cpp"
     "${PROJECT_SOURCE_DIR}/logic/udptester/udpsession.h"
     "${PROJECT_SOURCE_DIR}/logic/udptester/udpsession.cpp"
+    "${PROJECT_SOURCE_DIR}/logic/udptester/ikcp/ikcp.h"
+    "${PROJECT_SOURCE_DIR}/logic/udptester/ikcp/ikcp.c"
+    "${PROJECT_SOURCE_DIR}/logic/udptester/ikcp/test.h"
+    "${PROJECT_SOURCE_DIR}/logic/udptester/ikcp/test.cpp"
     "${PROJECT_SOURCE_DIR}/logic/udptester/main.cpp"
     )
     

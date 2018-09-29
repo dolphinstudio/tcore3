@@ -839,26 +839,26 @@ TiXmlNode* TiXmlNode::Identify( const char* p, TiXmlEncoding encoding )
     // - Everthing else is unknown to tinyxml.
     //
 
-    const char* xmlHeader = { "<?xml" };
-    const char* commentHeader = { "<!--" };
-    const char* dtdHeader = { "<!" };
-    const char* cdataHeader = { "<![CDATA[" };
+    const char* xmlheader = { "<?xml" };
+    const char* commentheader = { "<!--" };
+    const char* dtdheader = { "<!" };
+    const char* cdataheader = { "<![CDATA[" };
 
-    if ( StringEqual( p, xmlHeader, true, encoding ) )
+    if ( StringEqual( p, xmlheader, true, encoding ) )
     {
         #ifdef DEBUG_PARSER
             TIXML_LOG( "XML parsing Declaration\n" );
         #endif
         returnNode = new TiXmlDeclaration();
     }
-    else if ( StringEqual( p, commentHeader, false, encoding ) )
+    else if ( StringEqual( p, commentheader, false, encoding ) )
     {
         #ifdef DEBUG_PARSER
             TIXML_LOG( "XML parsing Comment\n" );
         #endif
         returnNode = new TiXmlComment();
     }
-    else if ( StringEqual( p, cdataHeader, false, encoding ) )
+    else if ( StringEqual( p, cdataheader, false, encoding ) )
     {
         #ifdef DEBUG_PARSER
             TIXML_LOG( "XML parsing CDATA\n" );
@@ -867,7 +867,7 @@ TiXmlNode* TiXmlNode::Identify( const char* p, TiXmlEncoding encoding )
         text->SetCDATA( true );
         returnNode = text;
     }
-    else if ( StringEqual( p, dtdHeader, false, encoding ) )
+    else if ( StringEqual( p, dtdheader, false, encoding ) )
     {
         #ifdef DEBUG_PARSER
             TIXML_LOG( "XML parsing Unknown(1)\n" );

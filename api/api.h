@@ -7,6 +7,8 @@
 #define invalid_port 0
 #define package_max_size 65507
 
+class iModule;
+
 namespace tcore {
     namespace api {
         struct oAddress {
@@ -198,6 +200,8 @@ namespace tcore {
         class iCore {
         public:
             virtual ~iCore() {}
+
+            virtual iModule * findModule(const std::string & name) = 0;
 
             virtual const char * getArgs(const char * name) = 0;
 

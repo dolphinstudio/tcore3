@@ -1,0 +1,89 @@
+syntax = "proto3";
+
+enum eNProtoID {
+    Report = 0;
+    AssigneID = 1;
+    NoderInited = 2;
+    BroadcastNoder = 3;
+    AccountReport = 4;
+    AccountLogout = 5;
+    AccountRelogin = 6;
+    RelayClientMessageToNoder = 7;
+    RelayServerMessageToClient = 8;
+
+    LoadReport = 50;
+    TellNoderMatchSuccessd = 51;
+    TellGameOver = 100;
+}
+
+message oAddress {
+    int32 area = 1;
+    string ip = 2;
+    int32 port = 3;
+}
+
+message oReport {
+    string name = 1;
+    int32 id = 2;
+    oAddress address = 3;
+}
+
+message oAssigneID {
+    int32 id = 1;
+}
+
+message oNoderInited {
+
+}
+
+message oBroadcastNoder {
+    int32 id = 1;
+    string name = 2;
+    oAddress address = 3;
+}
+
+message oAccountReport {
+    int32 gateid = 1;
+    int64 account = 2;
+}
+
+message oAccountLogout {
+    int64 account = 1;
+}
+
+message oAccountRelogin {
+    int32 gateid = 1;
+    int64 account = 2;
+}
+
+message oRelayClientMessageToNoder {
+    int64 account = 1;
+    int32 messageid = 2;
+    bytes body = 3;
+}
+
+message oRelayServerMessageToClient {
+    repeated int64 account = 1;
+    int32 messageid = 2;
+    bytes body = 3;
+}
+
+message oLoadReport {
+    int32 load = 1;
+}
+
+message oMatcher {
+    int64 account = 1;
+    int32 gateid = 2;
+    bool isai = 3;
+}
+
+message oTellNoderMatchSuccessd {
+    int32 matchid = 1;
+    int32 logicid = 2;
+    repeated oMatcher matcher = 3;
+}
+
+message oTellGameOver {
+    int64 account = 1;
+}

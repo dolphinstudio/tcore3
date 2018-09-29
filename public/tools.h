@@ -4,6 +4,7 @@
 #include "multisys.h"
 #include <chrono>
 #include <string>
+#include <vector>
 
 namespace tools {
     namespace memery {
@@ -69,15 +70,40 @@ namespace tools {
     namespace file {
         const char * getApppath();
         bool mkdir(const char * path);
+
+        typedef std::vector<std::string> opaths, onames;
+        bool getfiles(const char * dir, const char * ex, OUT opaths & paths, OUT onames & names, OUT s32 & count);
     }
-
-
+    
     template <typename t>
     struct oHashFunction {
         size_t operator()(const t & src) const {
             return (size_t)src;
         }
     };
+
+    typedef std::vector<std::string> osplitres;
+    inline s32 split(const std::string & src, const std::string & commas, osplitres & res) {
+        if (src == "") {
+            return 0;
+        }
+        //方便截取最后一段数据
+        std::string strs = src + commas;
+
+        size_t pos = strs.find(commas);
+        size_t size = strs.size();
+
+        while (pos != std::string::npos) {
+            std::string x = strs.substr(0, pos);
+            if (x != "") {
+                res.push_back(x.c_str());
+            }
+            strs = strs.substr(pos + commas.size(), size);
+            pos = strs.find(commas);
+        }
+
+        return res.size();
+    }
 
     inline bool stringAsBool(const char * b) {
         return !strcmp(b, "true");

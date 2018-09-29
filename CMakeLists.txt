@@ -80,11 +80,12 @@ SET(public
     "${PROJECT_SOURCE_DIR}/public/multisys.cpp"
     "${PROJECT_SOURCE_DIR}/public/ilock.h"
     "${PROJECT_SOURCE_DIR}/public/spinlock.h"
+    "${PROJECT_SOURCE_DIR}/public/tqcsort.h"
     "${PROJECT_SOURCE_DIR}/public/tools.h"
     "${PROJECT_SOURCE_DIR}/public/tools-win.cpp"
     "${PROJECT_SOURCE_DIR}/public/tpool.h"
     "${PROJECT_SOURCE_DIR}/public/tqueue.h"
-    "${PROJECT_SOURCE_DIR}/public/unid.h"
+    "${PROJECT_SOURCE_DIR}/public/uuid.h"
     "${PROJECT_SOURCE_DIR}/public/cbuffer.h"
     "${PROJECT_SOURCE_DIR}/public/md5.h"
     "${PROJECT_SOURCE_DIR}/public/md5.cpp"
@@ -103,11 +104,12 @@ SET(public
     "${PROJECT_SOURCE_DIR}/public/multisys.cpp"
     "${PROJECT_SOURCE_DIR}/public/ilock.h"
     "${PROJECT_SOURCE_DIR}/public/spinlock.h"
+    "${PROJECT_SOURCE_DIR}/public/tqcsort.h"
     "${PROJECT_SOURCE_DIR}/public/tools.h"
     "${PROJECT_SOURCE_DIR}/public/tools-linux.cpp"
     "${PROJECT_SOURCE_DIR}/public/tpool.h"
     "${PROJECT_SOURCE_DIR}/public/tqueue.h"
-    "${PROJECT_SOURCE_DIR}/public/unid.h"
+    "${PROJECT_SOURCE_DIR}/public/uuid.h"
     "${PROJECT_SOURCE_DIR}/public/cbuffer.h"
     "${PROJECT_SOURCE_DIR}/public/md5.h"
     "${PROJECT_SOURCE_DIR}/public/md5.cpp"
@@ -125,23 +127,6 @@ ELSEIF(UNIX)
     SET(libcurl
         debug "/usr/lib64/libcurl.so"
         optimized "/usr/lib64/libcurl.so"
-    )
-    
-    SET(protobuf
-        debug "/usr/local/lib64/libprotobuf.a"
-        optimized "/usr/local/lib64/libprotobuf.a"
-    )
-    
-    SET(libredis    
-        debug "${PROJECT_SOURCE_DIR}/library/libhiredis.a"
-        optimized "${PROJECT_SOURCE_DIR}/library/libhiredis.a"
-    )
-    
-    SET(liblua
-        debug "${PROJECT_SOURCE_DIR}/library/libluabind.a"
-        debug "${PROJECT_SOURCE_DIR}/library/liblua.a"
-        optimized "${PROJECT_SOURCE_DIR}/library/libluabind.a"
-        optimized "${PROJECT_SOURCE_DIR}/library/liblua.a"
     )
 ENDIF()
 

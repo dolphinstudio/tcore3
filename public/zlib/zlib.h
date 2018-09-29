@@ -708,7 +708,7 @@ ZEXTERN uLong ZEXPORT deflateBound OF((z_streamp strm,
 /*
      deflateBound() returns an upper bound on the compressed size after
    deflation of sourceLen bytes.  It must be called after deflateInit() or
-   deflateInit2(), and after deflateSetHeader(), if used.  This would be used
+   deflateInit2(), and after deflateSetheader(), if used.  This would be used
    to allocate an output buffer for deflation in a single pass, and so would be
    called before deflate().  If that first deflate() call is provided the
    sourceLen input bytes, an output buffer allocated to the size returned by
@@ -750,11 +750,11 @@ ZEXTERN int ZEXPORT deflatePrime OF((z_streamp strm,
    source stream state was inconsistent.
 */
 
-ZEXTERN int ZEXPORT deflateSetHeader OF((z_streamp strm,
+ZEXTERN int ZEXPORT deflateSetheader OF((z_streamp strm,
                                          gz_headerp head));
 /*
-     deflateSetHeader() provides gzip header information for when a gzip
-   stream is requested by deflateInit2().  deflateSetHeader() may be called
+     deflateSetheader() provides gzip header information for when a gzip
+   stream is requested by deflateInit2().  deflateSetheader() may be called
    after deflateInit2() or deflateReset() and before the first call of
    deflate().  The text, time, os, extra field, name, and comment information
    in the provided gz_header structure are written to the gzip header (xflag is
@@ -766,11 +766,11 @@ ZEXTERN int ZEXPORT deflateSetHeader OF((z_streamp strm,
    1.3.x) do not support header crc's, and will report that it is a "multi-part
    gzip file" and give up.
 
-     If deflateSetHeader is not used, the default gzip header has text false,
+     If deflateSetheader is not used, the default gzip header has text false,
    the time set to zero, and os set to 255, with no extra, name, or comment
    fields.  The gzip header is returned to the default state by deflateReset().
 
-     deflateSetHeader returns Z_OK if success, or Z_STREAM_ERROR if the source
+     deflateSetheader returns Z_OK if success, or Z_STREAM_ERROR if the source
    stream state was inconsistent.
 */
 
@@ -968,11 +968,11 @@ ZEXTERN long ZEXPORT inflateMark OF((z_streamp strm));
    source stream state was inconsistent.
 */
 
-ZEXTERN int ZEXPORT inflateGetHeader OF((z_streamp strm,
+ZEXTERN int ZEXPORT inflateGetheader OF((z_streamp strm,
                                          gz_headerp head));
 /*
-     inflateGetHeader() requests that gzip header information be stored in the
-   provided gz_header structure.  inflateGetHeader() may be called after
+     inflateGetheader() requests that gzip header information be stored in the
+   provided gz_header structure.  inflateGetheader() may be called after
    inflateInit2() or inflateReset(), and before the first call of inflate().
    As inflate() processes the gzip stream, head->done is zero until the header
    is completed, at which time head->done is set to one.  If a zlib stream is
@@ -993,18 +993,18 @@ ZEXTERN int ZEXPORT inflateGetHeader OF((z_streamp strm,
    terminated with a zero unless the length is greater than comm_max.  When any
    of extra, name, or comment are not Z_NULL and the respective field is not
    present in the header, then that field is set to Z_NULL to signal its
-   absence.  This allows the use of deflateSetHeader() with the returned
+   absence.  This allows the use of deflateSetheader() with the returned
    structure to duplicate the header.  However if those fields are set to
    allocated memory, then the application will need to save those pointers
    elsewhere so that they can be eventually freed.
 
-     If inflateGetHeader is not used, then the header information is simply
+     If inflateGetheader is not used, then the header information is simply
    discarded.  The header is always checked for validity, including the header
    CRC if present.  inflateReset() will reset the process to discard the header
-   information.  The application would need to call inflateGetHeader() again to
+   information.  The application would need to call inflateGetheader() again to
    retrieve the header from the next gzip stream.
 
-     inflateGetHeader returns Z_OK if success, or Z_STREAM_ERROR if the source
+     inflateGetheader returns Z_OK if success, or Z_STREAM_ERROR if the source
    stream state was inconsistent.
 */
 

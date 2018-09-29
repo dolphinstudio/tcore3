@@ -9,6 +9,9 @@ namespace tcore {
     class core : public iCore {
     public:
         virtual ~core() {}
+
+        virtual iModule * findModule(const std::string & name);
+
         void parseArgs(int argc, const char ** argv);
         virtual const char * getArgs(const char * name);
 

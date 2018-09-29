@@ -13,6 +13,10 @@ namespace tcore {
     static core * static_core = nullptr;
     static unordered_map<std::string, std::string> static_args_map;
 
+    iModule * core::findModule(const std::string & name) {
+        return logic::getInstance()->findModule(name.c_str());
+    }
+
     void core::parseArgs(int argc, const char ** argv) {
         for (int i = 1; i < argc; ++i) {
             if (strncmp(argv[i], "--", 2) == 0) {

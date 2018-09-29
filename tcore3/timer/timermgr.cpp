@@ -89,7 +89,7 @@ namespace tcore {
         TimerContext ct(id, context);
         tbase * base = tbase::Create(timer, id, context, count, interval / jiffies_interval, file, line);
         itor->second.insert(make_pair(ct, base));
-        //TraceLog(core::getInstance(), "insert timer base %x, timer %x, id %d, context %lld | %llx", base, timer, id, context._context_mark, context._context_point);
+        //trace(core::getInstance(), "insert timer base %x, timer %x, id %d, context %lld | %llx", base, timer, id, context._context_mark, context._context_point);
         return base;
     }
 
@@ -145,7 +145,7 @@ namespace tcore {
     void timermgr::killTimer(iTimer * timer, const s32 id, const iContext & context) {
         tbase * base = findTimerBase(timer, id, context);
         if (base == nullptr || !base->isValid()) {
-            //TraceLog(core::getInstance(), "timer base maybe deleted timer %x, id %d", timer, id);
+            //trace(core::getInstance(), "timer base maybe deleted timer %x, id %d", timer, id);
             return;
         }
 
@@ -204,7 +204,7 @@ namespace tcore {
             schedule(base);
         }
 
-        //TraceLog(core::getInstance(), "base %x resume, timer %x, id %d, context %lld | %llx", base, timer, id, context._context_mark, context._context_point);
+        //trace(core::getInstance(), "base %x resume, timer %x, id %d, context %lld | %llx", base, timer, id, context._context_mark, context._context_point);
     }
 
     void timermgr::traceTimer() {
