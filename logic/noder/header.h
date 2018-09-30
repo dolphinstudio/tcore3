@@ -5,7 +5,7 @@
 #include "iSession.h"
 #include "iIdmanager.h"
 
-#include "Noder.pb.h"
+#include "noder.pb.h"
 
 #include "tinyxml/tinyxml.h"
 #include "Tools.h"

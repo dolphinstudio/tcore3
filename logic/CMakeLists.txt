@@ -23,15 +23,15 @@ set(interface
 )
 
 set(nodeproto
-    "${PROJECT_SOURCE_DIR}/logic/proto/Noder.pb.h"
-    "${PROJECT_SOURCE_DIR}/logic/proto/Noder.pb.cc"
+    "${PROJECT_SOURCE_DIR}/logic/proto/noder.pb.h"
+    "${PROJECT_SOURCE_DIR}/logic/proto/noder.pb.cc"
 )
 
 set(proto
-    "${PROJECT_SOURCE_DIR}/logic/proto/Data.pb.h"
-    "${PROJECT_SOURCE_DIR}/logic/proto/Data.pb.cc"
-    "${PROJECT_SOURCE_DIR}/logic/proto/Game.pb.h"
-    "${PROJECT_SOURCE_DIR}/logic/proto/Game.pb.cc"
+    "${PROJECT_SOURCE_DIR}/logic/proto/data.pb.h"
+    "${PROJECT_SOURCE_DIR}/logic/proto/data.pb.cc"
+    "${PROJECT_SOURCE_DIR}/logic/proto/game.pb.h"
+    "${PROJECT_SOURCE_DIR}/logic/proto/game.pb.cc"
 )
 
 IF(WIN32)

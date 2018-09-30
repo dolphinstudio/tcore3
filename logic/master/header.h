@@ -3,7 +3,7 @@
 
 #include "iMaster.h"
 #include "iSession.h"
-#include "Noder.pb.h"
+#include "noder.pb.h"
 #include "tinyxml/tinyxml.h"
 
 #include "tools.h"

@@ -19,10 +19,10 @@
 #endif
 // @@protoc_insertion_point(includes)
 
-namespace protobuf_Data_2eproto {
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_Data_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_oIdentity;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_Data_2eproto ::google::protobuf::internal::SCCInfo<2> scc_info_oUnit;
-}  // namespace protobuf_Data_2eproto
+namespace protobuf_data_2eproto {
+extern PROTOBUF_INTERNAL_EXPORT_protobuf_data_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_oIdentity;
+extern PROTOBUF_INTERNAL_EXPORT_protobuf_data_2eproto ::google::protobuf::internal::SCCInfo<2> scc_info_oUnit;
+}  // namespace protobuf_data_2eproto
 namespace protobuf_game_2eproto {
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_game_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_oCdInfo;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_game_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_oMatcherInfo;
@@ -204,7 +204,7 @@ static void InitDefaultsoServerLoginAws() {
 
 ::google::protobuf::internal::SCCInfo<1> scc_info_oServerLoginAws =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsoServerLoginAws}, {
-      &protobuf_Data_2eproto::scc_info_oIdentity.base,}};
+      &protobuf_data_2eproto::scc_info_oIdentity.base,}};
 
 static void InitDefaultsoClientMatchReq() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -233,7 +233,7 @@ static void InitDefaultsoMatcherInfo() {
 
 ::google::protobuf::internal::SCCInfo<1> scc_info_oMatcherInfo =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsoMatcherInfo}, {
-      &protobuf_Data_2eproto::scc_info_oUnit.base,}};
+      &protobuf_data_2eproto::scc_info_oUnit.base,}};
 
 static void InitDefaultsoServerMatchAws() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -248,7 +248,7 @@ static void InitDefaultsoServerMatchAws() {
 
 ::google::protobuf::internal::SCCInfo<2> scc_info_oServerMatchAws =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 2, InitDefaultsoServerMatchAws}, {
-      &protobuf_Data_2eproto::scc_info_oUnit.base,
+      &protobuf_data_2eproto::scc_info_oUnit.base,
       &protobuf_game_2eproto::scc_info_oMatcherInfo.base,}};
 
 static void InitDefaultsoClientCreateChallengeForFriendReq() {
@@ -278,7 +278,7 @@ static void InitDefaultsoClientJoinChallengeReq() {
 
 ::google::protobuf::internal::SCCInfo<1> scc_info_oClientJoinChallengeReq =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsoClientJoinChallengeReq}, {
-      &protobuf_Data_2eproto::scc_info_oIdentity.base,}};
+      &protobuf_data_2eproto::scc_info_oIdentity.base,}};
 
 static void InitDefaultsoServerCreateChallengeForFriendAws() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -293,7 +293,7 @@ static void InitDefaultsoServerCreateChallengeForFriendAws() {
 
 ::google::protobuf::internal::SCCInfo<1> scc_info_oServerCreateChallengeForFriendAws =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsoServerCreateChallengeForFriendAws}, {
-      &protobuf_Data_2eproto::scc_info_oIdentity.base,}};
+      &protobuf_data_2eproto::scc_info_oIdentity.base,}};
 
 static void InitDefaultsoClientChallengeCancelReq() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -350,8 +350,8 @@ static void InitDefaultsoRolesInfo() {
 
 ::google::protobuf::internal::SCCInfo<2> scc_info_oRolesInfo =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 2, InitDefaultsoRolesInfo}, {
-      &protobuf_Data_2eproto::scc_info_oIdentity.base,
-      &protobuf_Data_2eproto::scc_info_oUnit.base,}};
+      &protobuf_data_2eproto::scc_info_oIdentity.base,
+      &protobuf_data_2eproto::scc_info_oUnit.base,}};
 
 static void InitDefaultsoServerGameStartPush() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -395,8 +395,8 @@ static void InitDefaultsoServerRolesGoToBattlePush() {
 
 ::google::protobuf::internal::SCCInfo<2> scc_info_oServerRolesGoToBattlePush =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 2, InitDefaultsoServerRolesGoToBattlePush}, {
-      &protobuf_Data_2eproto::scc_info_oIdentity.base,
-      &protobuf_Data_2eproto::scc_info_oUnit.base,}};
+      &protobuf_data_2eproto::scc_info_oIdentity.base,
+      &protobuf_data_2eproto::scc_info_oUnit.base,}};
 
 static void InitDefaultsoServerRoleQueueUpdatePush() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -411,7 +411,7 @@ static void InitDefaultsoServerRoleQueueUpdatePush() {
 
 ::google::protobuf::internal::SCCInfo<1> scc_info_oServerRoleQueueUpdatePush =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsoServerRoleQueueUpdatePush}, {
-      &protobuf_Data_2eproto::scc_info_oUnit.base,}};
+      &protobuf_data_2eproto::scc_info_oUnit.base,}};
 
 static void InitDefaultsoServerRolesLeaveBattlePush() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -426,7 +426,7 @@ static void InitDefaultsoServerRolesLeaveBattlePush() {
 
 ::google::protobuf::internal::SCCInfo<1> scc_info_oServerRolesLeaveBattlePush =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsoServerRolesLeaveBattlePush}, {
-      &protobuf_Data_2eproto::scc_info_oIdentity.base,}};
+      &protobuf_data_2eproto::scc_info_oIdentity.base,}};
 
 static void InitDefaultsoCdInfo() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -441,7 +441,7 @@ static void InitDefaultsoCdInfo() {
 
 ::google::protobuf::internal::SCCInfo<1> scc_info_oCdInfo =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsoCdInfo}, {
-      &protobuf_Data_2eproto::scc_info_oIdentity.base,}};
+      &protobuf_data_2eproto::scc_info_oIdentity.base,}};
 
 static void InitDefaultsoServerGameFrame() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -456,7 +456,7 @@ static void InitDefaultsoServerGameFrame() {
 
 ::google::protobuf::internal::SCCInfo<2> scc_info_oServerGameFrame =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 2, InitDefaultsoServerGameFrame}, {
-      &protobuf_Data_2eproto::scc_info_oUnit.base,
+      &protobuf_data_2eproto::scc_info_oUnit.base,
       &protobuf_game_2eproto::scc_info_oCdInfo.base,}};
 
 static void InitDefaultsoServerRoleThrustingPush() {
@@ -472,7 +472,7 @@ static void InitDefaultsoServerRoleThrustingPush() {
 
 ::google::protobuf::internal::SCCInfo<1> scc_info_oServerRoleThrustingPush =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsoServerRoleThrustingPush}, {
-      &protobuf_Data_2eproto::scc_info_oIdentity.base,}};
+      &protobuf_data_2eproto::scc_info_oIdentity.base,}};
 
 static void InitDefaultsoServerPointChangePush() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -487,7 +487,7 @@ static void InitDefaultsoServerPointChangePush() {
 
 ::google::protobuf::internal::SCCInfo<1> scc_info_oServerPointChangePush =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsoServerPointChangePush}, {
-      &protobuf_Data_2eproto::scc_info_oIdentity.base,}};
+      &protobuf_data_2eproto::scc_info_oIdentity.base,}};
 
 static void InitDefaultsoServerCreateSceneEffect() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -502,7 +502,7 @@ static void InitDefaultsoServerCreateSceneEffect() {
 
 ::google::protobuf::internal::SCCInfo<1> scc_info_oServerCreateSceneEffect =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsoServerCreateSceneEffect}, {
-      &protobuf_Data_2eproto::scc_info_oIdentity.base,}};
+      &protobuf_data_2eproto::scc_info_oIdentity.base,}};
 
 static void InitDefaultsoServerRemoveSceneEffect() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -517,7 +517,7 @@ static void InitDefaultsoServerRemoveSceneEffect() {
 
 ::google::protobuf::internal::SCCInfo<1> scc_info_oServerRemoveSceneEffect =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsoServerRemoveSceneEffect}, {
-      &protobuf_Data_2eproto::scc_info_oIdentity.base,}};
+      &protobuf_data_2eproto::scc_info_oIdentity.base,}};
 
 static void InitDefaultsoServerCastSkillPush() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -532,7 +532,7 @@ static void InitDefaultsoServerCastSkillPush() {
 
 ::google::protobuf::internal::SCCInfo<1> scc_info_oServerCastSkillPush =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsoServerCastSkillPush}, {
-      &protobuf_Data_2eproto::scc_info_oIdentity.base,}};
+      &protobuf_data_2eproto::scc_info_oIdentity.base,}};
 
 static void InitDefaultsoServerCreateBuff() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -547,7 +547,7 @@ static void InitDefaultsoServerCreateBuff() {
 
 ::google::protobuf::internal::SCCInfo<1> scc_info_oServerCreateBuff =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsoServerCreateBuff}, {
-      &protobuf_Data_2eproto::scc_info_oIdentity.base,}};
+      &protobuf_data_2eproto::scc_info_oIdentity.base,}};
 
 static void InitDefaultsoServerRemoveBuff() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -562,7 +562,7 @@ static void InitDefaultsoServerRemoveBuff() {
 
 ::google::protobuf::internal::SCCInfo<1> scc_info_oServerRemoveBuff =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsoServerRemoveBuff}, {
-      &protobuf_Data_2eproto::scc_info_oIdentity.base,}};
+      &protobuf_data_2eproto::scc_info_oIdentity.base,}};
 
 static void InitDefaultsoServerResumeGamePush() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -577,7 +577,7 @@ static void InitDefaultsoServerResumeGamePush() {
 
 ::google::protobuf::internal::SCCInfo<6> scc_info_oServerResumeGamePush =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 6, InitDefaultsoServerResumeGamePush}, {
-      &protobuf_Data_2eproto::scc_info_oUnit.base,
+      &protobuf_data_2eproto::scc_info_oUnit.base,
       &protobuf_game_2eproto::scc_info_oMatcherInfo.base,
       &protobuf_game_2eproto::scc_info_oRolesInfo.base,
       &protobuf_game_2eproto::scc_info_oServerCreateBuff.base,
@@ -932,7 +932,7 @@ void protobuf_RegisterTypes(const ::std::string&) {
 static void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n\ngame.proto\032\nData.proto\"O\n\017oClientLogin"
+      "\n\ngame.proto\032\ndata.proto\"O\n\017oClientLogin"
       "Req\022\034\n\010platform\030\001 \001(\0162\n.ePlatform\022\017\n\007acc"
       "ount\030\002 \001(\005\022\r\n\005token\030\003 \001(\t\"E\n\017oServerLogi"
       "nAws\022\025\n\004code\030\001 \001(\0162\007.eError\022\033\n\007account\030\002"
@@ -1018,7 +1018,7 @@ static void AddDescriptorsImpl() {
       descriptor, 3236);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "game.proto", &protobuf_RegisterTypes);
-  ::protobuf_Data_2eproto::AddDescriptors();
+  ::protobuf_data_2eproto::AddDescriptors();
 }
 
 void AddDescriptors() {
