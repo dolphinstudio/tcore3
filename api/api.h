@@ -203,6 +203,7 @@ namespace tcore {
 
             virtual iModule * findModule(const std::string & name) = 0;
 
+            virtual const char * getEnv() = 0;
             virtual const char * getArgs(const char * name) = 0;
 
             virtual void setCorename(const char * name) = 0;

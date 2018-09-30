@@ -1,56 +1,56 @@
-#ifndef __Unit_h__
-#define __Unit_h__
+#ifndef __unit_h__
+#define __unit_h__
 
-#include "Header.h"
+#include "header.h"
 
-class Memony;
-class MemonyLayout;
-class Table;
+class memony;
+class mlayout;
+class table;
 
-class Unit : public IUnit {
-    typedef list<AttributeHandle> ATTR_HANDLE_LIST;
-    typedef map<s16, ATTR_HANDLE_LIST> ATTR_HANDLE_MAP;
+class Unit : public iUnit {
+    typedef list<modifyer> modifyer_list;
+    typedef map<s16, modifyer_list> modify_map;
 public:
     const std::string _file;
     const s32 _line;
     const std::string _name;
     const s64 _create_tick;
 
-    Unit(const char * name, const s64 id, const MemonyLayout * layout, const char * file, const s32 line);
+    Unit(const char * name, const s64 id, const mlayout * layout, const char * file, const s32 line);
     virtual ~Unit();
 
-    virtual const s64 GetID() const;
-    virtual const char * GetName() const;
-    virtual const std::vector<dc::layout> & GetLayout() const;
+    virtual const s64 getid() const;
+    virtual const char * getname() const;
+    virtual const std::vector<dc::layout> & getLayout() const;
 
-    virtual bool SetAttrInt64(const dc::layout & info, const s64 value, const bool sync);
-    virtual bool SetAttrFloat(const dc::layout & info, const float value, const bool sync);
-    virtual bool SetAttrBool(const dc::layout & info, const bool value, const bool sync);
-    virtual bool SetAttrString(const dc::layout & info, const char * value, const bool sync);
+    virtual bool setAttrInt64(const dc::layout & info, const s64 value, const bool sync);
+    virtual bool setAttrFloat(const dc::layout & info, const float value, const bool sync);
+    virtual bool setAttrBool(const dc::layout & info, const bool value, const bool sync);
+    virtual bool setAttrString(const dc::layout & info, const char * value, const bool sync);
 
-    virtual s64 GetAttrInt64(const dc::layout & info) const;
-    virtual float GetAttrFloat(const dc::layout & info) const;
-    virtual bool GetAttrBool(const dc::layout & info) const;
-    virtual const char * GetAttrString(const dc::layout & info) const;
+    virtual s64 getAttrInt64(const dc::layout & info) const;
+    virtual float getAttrFloat(const dc::layout & info) const;
+    virtual bool getAttrBool(const dc::layout & info) const;
+    virtual const char * getAttrString(const dc::layout & info) const;
 
     //通过名称获取表
-    virtual ITable * FindTable(const s32 index) const;
+    virtual iTable * findTable(const s32 index) const;
 
 protected:
-    virtual bool RegAttrModifyCall(const dc::layout &, const AttributeHandle &);
-    virtual bool RegAttrModifyAnyCall(const AttributeHandle &);
+    virtual bool registerModifyer(const dc::layout &, const modifyer &);
+    virtual bool registerAllModifyer(const modifyer &);
 
-    virtual void EveryAttrChangedCall(const dc::layout & l, const void * oldvalue, const void * newvalue, const bool sync);
-    virtual void AttrChangedCall(const dc::layout & l, const void * oldvalue, const void * newvalue, const bool sync);
+    virtual void anyattrModifyed(const dc::layout & l, const void * oldvalue, const void * newvalue, const bool sync);
+    virtual void attrModifyed(const dc::layout & l, const void * oldvalue, const void * newvalue, const bool sync);
 
 private:
     const s64 _id;
-    const MemonyLayout * _layout;
-    Memony * _memony;
+    const mlayout * _layout;
+    memony * _memony;
     tables _tables;
 
-    ATTR_HANDLE_LIST _any_call_list;
-    ATTR_HANDLE_MAP _attr_handle_map;
+    modifyer_list _any_call_list;
+    modify_map _attr_handle_map;
 };
 
-#endif //__Unit_h__
+#endif //__unit_h__

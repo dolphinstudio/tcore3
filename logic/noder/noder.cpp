@@ -21,7 +21,7 @@ name_id_session_map g_name_id_sessions_map;
 std::map<s16, iProtoer<iNoderSession>> g_noder_c_protoer_map;
 
 api::iCore * g_core = nullptr;
-iIDManager * g_idmanager = nullptr;
+iIdmanager * g_idmanager = nullptr;
 
 std::list<oNoderEvent> g_noder_events[eNoderEvent::count];
 noder_load_sort_pool_map g_noder_load_sort_pool_map;
@@ -81,7 +81,7 @@ bool noder::initialize(api::iCore * core) {
 }
 
 bool noder::launch(api::iCore * core) {
-    g_idmanager = (iIDManager *)core->findModule("idmanager");
+    g_idmanager = (iIdmanager *)core->findModule("idmanager");
 
     register_proto(this, eNProtoID::AssigneID, noder::onAssigneID);
     register_proto(this, eNProtoID::BroadcastNoder, noder::onBroadcastNoder);

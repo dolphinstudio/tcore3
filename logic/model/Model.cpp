@@ -1,11 +1,11 @@
-#include "Model.h"
-#include "Header.h"
-#include "Unit.h"
-#include "Table.h"
+#include "model.h"
+#include "header.h"
+#include "unit.h"
+#include "table.h"
 
-ICore * g_core = nullptr;
-IEvent * g_event = nullptr;
-IIDManager * g_idmanager = nullptr;
+api::iCore * g_core = nullptr;
+iEvent * g_event = nullptr;
+iIdmanager * g_idmanager = nullptr;
 
 table_map g_table_map;
 unit_map g_unit_map;
@@ -14,27 +14,27 @@ memonylayout_map g_table_layout_map;
 memonylayout_map g_static_table_layout_map;
 object_table_layouts g_object_table_layouts;
 
-TPool<Unit, 1, 4096> g_object_pool;
-TPool<Row, 1, 512> g_row_pool;
-TPool<Table, 1, 4096> g_table_pool;
+tlib::tpool<Unit, 1, 4096> g_object_pool;
+tlib::tpool<row, 1, 512> g_row_pool;
+tlib::tpool<table, 1, 4096> g_table_pool;
 
 string_map g_path_map;
 
-Model::ANY_OBJECT_CREATED_CALL Model::s_any_obj_created_calls;
-Model::ANY_OBJECT_DESTORY_CALL Model::s_any_obj_destory_calls;
+model::any_unit_creater model::s_any_obj_created_calls;
+model::any_unit_destoryer model::s_any_obj_destory_calls;
 
-Model::OBJECT_CREATED_CALL Model::s_obj_created_calls;
-Model::OBJECT_DESTORY_CALL Model::s_obj_destory_calls;
+model::unit_creater model::s_obj_created_calls;
+model::object_destoryer model::s_obj_destory_calls;
 
-bool Model::Initialize(ICore * core) {
+bool model::initialize(api::iCore * core) {
     g_core = core;
     tassert(g_core, "where is core?");
-    return InitGloabTable();
+    return initGloabTable();
 }
 
-bool Model::InitGloabTable() {
+bool model::initGloabTable() {
     char path[512] = { 0 };
-    SafeSprintf(path, sizeof(path), "%s/%s/model/global.xml", tools::GetAppPath(), g_core->GetEnvpath());
+    safesprintf(path, sizeof(path), "%s/%s/model/global.xml", tools::file::getApppath(), g_core->getEnv());
 
     TiXmlDocument xml;
     if (!xml.LoadFile(path)) {
@@ -55,7 +55,7 @@ bool Model::InitGloabTable() {
         }
 
         TiXmlElement * column = table->FirstChildElement("column");
-        MemonyLayout * layout = NEW MemonyLayout;
+        mlayout * layout = NEW mlayout;
         s32 index = 0xffff;
         s32 i = 0;
         while (column) {
@@ -63,11 +63,11 @@ bool Model::InitGloabTable() {
             const char * type = column->Attribute("type");
             tassert(name && type, "wtf");
 
-            bool key = (column->Attribute("key")) ? (tools::StringAsBool(column->Attribute("key"))) : false;
-            bool visual = (column->Attribute("visual")) ? (tools::StringAsBool(column->Attribute("visual"))) : false;
-            bool share = (column->Attribute("share")) ? (tools::StringAsBool(column->Attribute("share"))) : false;
-            bool save = (column->Attribute("save")) ? (tools::StringAsBool(column->Attribute("save"))) : false;
-            bool important = (column->Attribute("important")) ? (tools::StringAsBool(column->Attribute("important"))) : false;
+            bool key = (column->Attribute("key")) ? (tools::stringAsBool(column->Attribute("key"))) : false;
+            bool visual = (column->Attribute("visual")) ? (tools::stringAsBool(column->Attribute("visual"))) : false;
+            bool share = (column->Attribute("share")) ? (tools::stringAsBool(column->Attribute("share"))) : false;
+            bool save = (column->Attribute("save")) ? (tools::stringAsBool(column->Attribute("save"))) : false;
+            bool important = (column->Attribute("important")) ? (tools::stringAsBool(column->Attribute("important"))) : false;
 
             s32 size, mask;
             if (!strcmp(type, "s64")) {
@@ -80,7 +80,7 @@ bool Model::InitGloabTable() {
                 size = sizeof(bool);
                 mask = type_bool;
             } else if (!strcmp(type, "string")) {
-                size = tools::StringAsInt(column->Attribute("size"));
+                size = tools::stringAsInt(column->Attribute("size"));
                 mask = type_string;
             } else {
                 tassert(false, "what's this");
@@ -91,15 +91,15 @@ bool Model::InitGloabTable() {
                 tassert(0xffff == index, "wtf");
                 (0xffff == index) ? (index = i) : (NULL);
             }
-            layout->AddLayout(name, size, mask, visual, share, save, important);
+            layout->addlayout(name, size, mask, visual, share, save, important);
             column = column->NextSiblingElement("column");
             i++;
         }
 
         if (index != 0xffff) {
-            g_table_map.insert(make_pair(tablename, CREATE_FROM_POOL(g_table_pool, (IUnit *)nullptr, layout, layout->Query(index), __FILE__, __LINE__)));
+            g_table_map.insert(make_pair(tablename, create_from_pool(g_table_pool, (iUnit *)nullptr, layout, layout->query(index), __FILE__, __LINE__)));
         } else {
-            g_table_map.insert(make_pair(tablename, CREATE_FROM_POOL(g_table_pool, (IUnit *)nullptr, layout, (const dc::layout *)nullptr, __FILE__, __LINE__)));
+            g_table_map.insert(make_pair(tablename, create_from_pool(g_table_pool, (iUnit *)nullptr, layout, (const dc::layout *)nullptr, __FILE__, __LINE__)));
         }
         table = table->NextSiblingElement("table");
 
@@ -109,17 +109,17 @@ bool Model::InitGloabTable() {
     return true;
 }
 
-bool Model::Launch(ICore * core) {
-    g_event = (IEvent *)core->FindModule("Event");
-    g_idmanager = (IIDManager *)core->FindModule("IDManager");
+bool model::launch(api::iCore * core) {
+    g_event = (iEvent *)core->findModule("event");
+    g_idmanager = (iIdmanager *)core->findModule("idmanager");
 
     char path[512] = {0};
-    SafeSprintf(path, sizeof(path), "%s/%s/model/object", tools::GetAppPath(), core->GetEnvpath());
-    tools::VECTOR_PATH oPaths;
-    tools::VECTOR_NAME oNames;
+    safesprintf(path, sizeof(path), "%s/%s/model/object", tools::file::getApppath(), core->getEnv());
+    tools::file::opaths oPaths;
+    tools::file::onames oNames;
     s32 nCount = 0;
 
-    if (tools::ListFileInDircetory(path, ".xml", oPaths, oNames, nCount)) {
+    if (tools::file::getfiles(path, ".xml", oPaths, oNames, nCount)) {
         tassert(oPaths.size() == nCount && oNames.size() == nCount, "wtf");
         for (s32 i=0; i<nCount; i++) {
             if (g_path_map.end() != g_path_map.find(oNames[i].c_str())) {
@@ -131,11 +131,11 @@ bool Model::Launch(ICore * core) {
         }
 
         for (s32 i = 0; i < nCount; i++) {
-            QueryUnitLayout(core, oNames[i].c_str());
+            queryUnitLayout(core, oNames[i].c_str());
         }
 
         for (s32 i = 0; i < nCount; i++) {
-            QueryTableLayout(core, oNames[i].c_str());
+            queryTableLayout(core, oNames[i].c_str());
         }
     }
 
@@ -143,12 +143,12 @@ bool Model::Launch(ICore * core) {
     return true;
 }
 
-bool Model::Destroy(ICore * core) {
+bool model::destroy(api::iCore * core) {
     {
         unit_map::const_iterator itor = g_unit_map.begin();
         while (itor != g_unit_map.end()) {
-            TraceLog(g_core, "%s %d object leak", itor->second->_file.c_str(), itor->second->_line);
-            g_object_pool.Recover(itor->second);
+            trace(g_core, "%s %d object leak", itor->second->_file.c_str(), itor->second->_line);
+            recover_to_pool(g_object_pool, itor->second);
             itor++;
         }
     }
@@ -177,7 +177,7 @@ bool Model::Destroy(ICore * core) {
     {
         table_map::const_iterator itor = g_table_map.begin();
         while (itor != g_table_map.end()) {
-            g_table_pool.Recover(itor->second);
+            recover_to_pool(g_table_pool, itor->second);
             itor++;
         }
     }
@@ -185,16 +185,16 @@ bool Model::Destroy(ICore * core) {
     return false;
 }
 
-const MemonyLayout * Model::QueryUnitLayout(ICore * core, const char * name) {
+const mlayout * model::queryUnitLayout(api::iCore * core, const char * name) {
     memonylayout_map::const_iterator itor = g_unit_layout_map.find(name);
     if (itor != g_unit_layout_map.end()) {
         return itor->second;
     }
 
-    return CreateUnitLayout(core, name);
+    return createUnitLayout(core, name);
 }
 
-const MemonyLayout * Model::CreateUnitLayout(ICore * core, const char * name) {
+const mlayout * model::createUnitLayout(api::iCore * core, const char * name) {
     const char * path = nullptr; {
         string_map::const_iterator itor = g_path_map.find(name);
         if (itor == g_path_map.cend()) {
@@ -203,7 +203,7 @@ const MemonyLayout * Model::CreateUnitLayout(ICore * core, const char * name) {
         }
         path = itor->second.c_str();
     }
-    MemonyLayout * layout = nullptr;
+    mlayout * layout = nullptr;
     TiXmlDocument xmlDocument;
     if (!xmlDocument.LoadFile(path)) {
         tassert(false, "prop xml file %s load file", path);
@@ -214,16 +214,16 @@ const MemonyLayout * Model::CreateUnitLayout(ICore * core, const char * name) {
     tassert(root, "%s format error", path);
     const char * parent = root->Attribute("parent");
     if (parent != nullptr) {
-        const MemonyLayout * parent_layout = QueryUnitLayout(core, parent);
+        const mlayout * parent_layout = queryUnitLayout(core, parent);
         tassert(parent_layout, "where is parent %s xml", parent);
         if (nullptr == parent_layout) {
             return nullptr;
         }
 
-        layout = NEW MemonyLayout(parent_layout);
+        layout = NEW mlayout(parent_layout);
     }
     else {
-        layout = NEW MemonyLayout;
+        layout = NEW mlayout;
     }
 
     TiXmlElement * attr = root->FirstChildElement("attribute");
@@ -241,41 +241,41 @@ const MemonyLayout * Model::CreateUnitLayout(ICore * core, const char * name) {
             size = sizeof(bool);
             mask = type_bool;
         } else if (!strcmp(type, "string")) {
-            size = tools::StringAsInt(attr->Attribute("size"));
+            size = tools::stringAsInt(attr->Attribute("size"));
             mask = type_string;
         } else {
             tassert(false, "what's this");
             return nullptr;
         }
 
-        bool visual = tools::StringAsBool(attr->Attribute("visual"));
-        bool share = tools::StringAsBool(attr->Attribute("share"));
-        bool save = tools::StringAsBool(attr->Attribute("save"));
-        bool important = tools::StringAsBool(attr->Attribute("important"));
+        bool visual = tools::stringAsBool(attr->Attribute("visual"));
+        bool share = tools::stringAsBool(attr->Attribute("share"));
+        bool save = tools::stringAsBool(attr->Attribute("save"));
+        bool important = tools::stringAsBool(attr->Attribute("important"));
 
-        layout->AddLayout(name, size, mask, visual, share, save, important);
+        layout->addlayout(name, size, mask, visual, share, save, important);
 
         attr = attr->NextSiblingElement("attribute");
     }
 
     g_unit_layout_map.insert(make_pair(name, layout));
-    DebugLog(g_core, "============== %s prop enum start =================", name);
-    layout->EchoTemplate(g_core);
-    DebugLog(g_core, "============== %s prop enum end =================", name);
+    debug(g_core, "============== %s prop enum start =================", name);
+    layout->echoTemplate(g_core);
+    debug(g_core, "============== %s prop enum end =================", name);
 
     return layout;
 }
 
-const table_layout_array * Model::QueryTableLayout(ICore * core, const char * name) {
+const table_layout_array * model::queryTableLayout(api::iCore * core, const char * name) {
     object_table_layouts::iterator itor = g_object_table_layouts.find(name);
     if (itor != g_object_table_layouts.end()) {
         return &itor->second;
     }
 
-    return CreateTableLayout(core, name);
+    return qreateTableLayout(core, name);
 }
 
-const table_layout_array * Model::CreateTableLayout(ICore * core, const char * name) {
+const table_layout_array * model::qreateTableLayout(api::iCore * core, const char * name) {
     const char * path = nullptr; {
         string_map::const_iterator itor = g_path_map.find(name);
         if (itor == g_path_map.cend()) {
@@ -296,7 +296,7 @@ const table_layout_array * Model::CreateTableLayout(ICore * core, const char * n
     tassert(root, "%s format error", path);
     const char * parent = root->Attribute("parent");
     if (parent != nullptr) {
-        const table_layout_array * parent_layouts = QueryTableLayout(core, parent);
+        const table_layout_array * parent_layouts = queryTableLayout(core, parent);
         tassert(parent_layouts, "where is parent %s xml", parent);
         if (nullptr == parent_layouts) {
             return nullptr;
@@ -315,7 +315,7 @@ const table_layout_array * Model::CreateTableLayout(ICore * core, const char * n
         }
 
         TiXmlElement * column = table->FirstChildElement("column");
-        MemonyLayout * layout = NEW MemonyLayout;
+        mlayout * layout = NEW mlayout;
         s32 index = 0xffff;
         s32 i = 0;
         while (column) {
@@ -323,11 +323,11 @@ const table_layout_array * Model::CreateTableLayout(ICore * core, const char * n
             const char * type = column->Attribute("type");
             tassert(name && type, "wtf");
 
-            bool key = (column->Attribute("key")) ? (tools::StringAsBool(column->Attribute("key"))) : false;
-            bool visual = (column->Attribute("visual")) ? (tools::StringAsBool(column->Attribute("visual"))) : false;
-            bool share = (column->Attribute("share")) ? (tools::StringAsBool(column->Attribute("share"))) : false;
-            bool save = (column->Attribute("save")) ? (tools::StringAsBool(column->Attribute("save"))) : false;
-            bool important = (column->Attribute("important")) ? (tools::StringAsBool(column->Attribute("important"))) : false;
+            bool key = (column->Attribute("key")) ? (tools::stringAsBool(column->Attribute("key"))) : false;
+            bool visual = (column->Attribute("visual")) ? (tools::stringAsBool(column->Attribute("visual"))) : false;
+            bool share = (column->Attribute("share")) ? (tools::stringAsBool(column->Attribute("share"))) : false;
+            bool save = (column->Attribute("save")) ? (tools::stringAsBool(column->Attribute("save"))) : false;
+            bool important = (column->Attribute("important")) ? (tools::stringAsBool(column->Attribute("important"))) : false;
 
             s32 size, mask;
             if (!strcmp(type, "s64")) {
@@ -343,7 +343,7 @@ const table_layout_array * Model::CreateTableLayout(ICore * core, const char * n
                 mask = type_bool;
             }
             else if (!strcmp(type, "string")) {
-                size = tools::StringAsInt(column->Attribute("size"));
+                size = tools::stringAsInt(column->Attribute("size"));
                 mask = type_string;
             } else {
                 tassert(false, "what's this");
@@ -354,7 +354,7 @@ const table_layout_array * Model::CreateTableLayout(ICore * core, const char * n
                 tassert(0xffff == index, "wtf");
                 (0xffff == index) ? (index = i) : (NULL);
             } 
-            layout->AddLayout(name, size, mask, visual, share, save, important);
+            layout->addlayout(name, size, mask, visual, share, save, important);
             column = column->NextSiblingElement("column");
             i++;
         }
@@ -362,23 +362,23 @@ const table_layout_array * Model::CreateTableLayout(ICore * core, const char * n
         if (0xffff == index) {
             layouts.push_back(oTableLayout(nullptr, layout));
         } else {
-            layouts.push_back(oTableLayout(layout->Query(index), layout));
+            layouts.push_back(oTableLayout(layout->query(index), layout));
         }
         table = table->NextSiblingElement("table");
         g_table_layout_map.insert(make_pair(tablename, layout));
     }
 
 //     for (s32 i = 0; i < layouts.size(); i++) {
-//         DebugLog(g_core, "============== object %s table enum start =================", name);
+//         debug(g_core, "============== object %s table enum start =================", name);
 //         layouts[i]._layout->EchoTemplate(g_core);
-//         DebugLog(g_core, "============== object %s table enum end =================", name);
+//         debug(g_core, "============== object %s table enum end =================", name);
 //     }
 
     g_object_table_layouts.insert(make_pair(name, layouts));
     return &g_object_table_layouts[name];
 }
 
-IUnit * Model::FindUnit(const s64 id) {
+iUnit * model::findUnit(const s64 id) {
     unit_map::iterator itor = g_unit_map.find(id);
     if (itor == g_unit_map.end()) {
         return nullptr;
@@ -387,43 +387,43 @@ IUnit * Model::FindUnit(const s64 id) {
     return itor->second;
 }
 
-void Model::TraceMemory() {
-    TraceLog(g_core, "==============================trace memory start==========================");
-    s64 tick = tools::time::GetTimeMillisecond();
+void model::traceMemory() {
+    trace(g_core, "==============================trace memory start==========================");
+    s64 tick = tools::time::getMillisecond();
     for (unit_map::iterator itor = g_unit_map.begin(); itor != g_unit_map.end(); itor++) {
-        TraceLog(g_core, "Memory trace : object %s create from %s:%d live %d:%d:%d",
+        trace(g_core, "Memory trace : object %s create from %s:%d live %d:%d:%d",
             itor->second->_name.c_str(), itor->second->_file.c_str(), itor->second->_line,
             ((tick - itor->second->_create_tick) / (60 * 60 * 1000)),
             ((tick - itor->second->_create_tick) / (60 * 1000)) % 60,
             ((tick - itor->second->_create_tick) / 1000) % 60);
     }
-    TraceLog(g_core, "==============================trace memory end==========================");
+    trace(g_core, "==============================trace memory end==========================");
 }
 
-void Model::CleanMemory() {
-    MemonyPool::GetInstance().Clean(g_core);
-    TraceLog(g_core, "Clean menory");
+void model::cleanMemory() {
+    memonyPool::getInstance().clean(g_core);
+    trace(g_core, "Clean menory");
 }
 
-void Model::OnTimer(ICore * core, const s32 id, const IContext & context, const s64 tick) {
-    CleanMemory();
+void model::onTimer(api::iCore * core, const s32 id, const api::iContext & context, const s64 tick) {
+    cleanMemory();
 }
 
-IUnit * Model::Create(const char * name, const char * file, const s32 line) {
+iUnit * model::create(const char * name, const char * file, const s32 line) {
     memonylayout_map::const_iterator citor = g_unit_layout_map.find(name);
     if (citor == g_unit_layout_map.end()) {
         tassert(false, "what's this, %s", name);
         return nullptr;
     }
 
-    const MemonyLayout * layout = citor->second;
-    const s64 id = g_idmanager->CreateID();
+    const mlayout * layout = citor->second;
+    const s64 id = g_idmanager->create();
     if (g_unit_map.find(id) != g_unit_map.end()) {
         tassert(false, "object id is exists");
         return nullptr;
     }
 
-    Unit * object = CREATE_FROM_POOL(g_object_pool, name, id, layout, file, line);
+    Unit * object = create_from_pool(g_object_pool, name, id, layout, file, line);
     tassert(object, "create object error");
     if (nullptr == object) {
         return nullptr;
@@ -443,10 +443,10 @@ IUnit * Model::Create(const char * name, const char * file, const s32 line) {
     return object;
 }
 
-IUnit * Model::CreateUnitByID(const char * name, const s64 id, const char * file, const s32 line) {
+iUnit * model::createUnitByID(const char * name, const s64 id, const char * file, const s32 line) {
     unit_map::iterator itor = g_unit_map.find(id);
     if (itor != g_unit_map.end()) {
-        tassert(false, "object %s id %lld is exists", itor->second->GetName(), itor->second->GetID());
+        tassert(false, "object %s id %lld is exists", itor->second->getname(), itor->second->getid());
         return nullptr;
     }
 
@@ -456,8 +456,8 @@ IUnit * Model::CreateUnitByID(const char * name, const s64 id, const char * file
         return nullptr;
     }
 
-    const MemonyLayout * info = citor->second;
-    Unit * object = CREATE_FROM_POOL(g_object_pool, name, id, info, file, line);
+    const mlayout * info = citor->second;
+    Unit * object = create_from_pool(g_object_pool, name, id, info, file, line);
     tassert(object, "create object error");
     if (nullptr == object) {
         return nullptr;
@@ -477,15 +477,15 @@ IUnit * Model::CreateUnitByID(const char * name, const s64 id, const char * file
     return object;
 }
 
-void Model::Recove(IUnit * object, const char * file, const s32 line) {
+void model::recove(iUnit * object, const char * file, const s32 line) {
     tassert(object, "wtf");
     if (nullptr == object) {
         return;
     }
 
-    unit_map::iterator itor = g_unit_map.find(object->GetID());
+    unit_map::iterator itor = g_unit_map.find(object->getid());
     if (itor == g_unit_map.end() || itor->second != object) {
-        tassert(false, "where is this object %lld", object->GetID());
+        tassert(false, "where is this object %lld", object->getid());
         return;
     }
 
@@ -493,18 +493,18 @@ void Model::Recove(IUnit * object, const char * file, const s32 line) {
         i->_fun(g_core, object);
     }
 
-    auto ifind = s_obj_destory_calls.find(object->GetName());
+    auto ifind = s_obj_destory_calls.find(object->getname());
     if (ifind != s_obj_destory_calls.end()) {
         for (auto i = ifind->second.cbegin(); i != ifind->second.cend(); i++) {
             i->_fun(g_core, object);
         }
     }
 
-    g_object_pool.Recover(itor->second);
+    recover_to_pool(g_object_pool, itor->second);
     g_unit_map.erase(itor);
 }
 
-ITable * Model::FindStaticTable(const char * name) {
+iTable * model::findStaticTable(const char * name) {
     table_map::iterator itor = g_table_map.find(name);
     if (itor == g_table_map.end()) {
         tassert(false, "table is not exists");
@@ -515,26 +515,26 @@ ITable * Model::FindStaticTable(const char * name) {
 }
 
 //注册对象创建成功回调
-void Model::RegisterCreatedCall(const char * name, const Handle & handle) {
+void model::registerCreater(const char * name, const handler & handle) {
     if (nullptr == name) {
         s_any_obj_created_calls.insert(handle);
     } else {
         auto ifind = s_obj_created_calls.find(name);
         if (ifind == s_obj_created_calls.end()) {
-            ifind = s_obj_created_calls.insert(make_pair(name, ANY_OBJECT_CREATED_CALL())).first;
+            ifind = s_obj_created_calls.insert(make_pair(name, any_unit_creater())).first;
         }
         ifind->second.insert(handle);
     }
 }
 //注册对象销毁回调
-void Model::RegisterDestoryedCall(const char * name, const Handle & handle) {
+void model::registerDestoryer(const char * name, const handler & handle) {
     if (nullptr == name) {
         s_any_obj_destory_calls.insert(handle);
     }
     else {
         auto ifind = s_obj_destory_calls.find(name);
         if (ifind == s_obj_destory_calls.end()) {
-            ifind = s_obj_destory_calls.insert(make_pair(name, ANY_OBJECT_DESTORY_CALL())).first;
+            ifind = s_obj_destory_calls.insert(make_pair(name, any_unit_destoryer())).first;
         }
         ifind->second.insert(handle);
     }

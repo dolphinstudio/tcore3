@@ -5,6 +5,8 @@
 #include "httper/httper.h"
 #include "logic/logic.h"
 
+#include "tinyxml/tinyxml.h"
+
 #include <unordered_map>
 
 namespace tcore {
@@ -15,6 +17,10 @@ namespace tcore {
 
     iModule * core::findModule(const std::string & name) {
         return logic::getInstance()->findModule(name.c_str());
+    }
+
+    const char * core::getEnv() {
+        return nullptr;
     }
 
     void core::parseArgs(int argc, const char ** argv) {
@@ -46,15 +52,40 @@ namespace tcore {
 
     core * core::getInstance() {
         if (nullptr == static_core) {
-            static_core = new core;
-            getNetInstance();
-            timermgr::getInstance();
-            httper::getInstance();
-            logger::getInstance();
-            logic::getInstance();
+            static_core = NEW core;
+            if (!static_core->launch()) {
+                DEL static_core;
+                static_core = nullptr;
+            } else {
+                getNetInstance();
+                timermgr::getInstance();
+                httper::getInstance();
+                logger::getInstance();
+                logic::getInstance();
+            }
         }
 
         return static_core;
+    }
+
+    bool core::launch() {
+
+        std::string configpath;
+        configpath.append(tools::file::getApppath()).append("/server_config/server_config.xml");
+        printf("config path %s\n", configpath.c_str());
+        TiXmlDocument config;
+        if (!config.LoadFile(configpath.c_str())) {
+            tassert(false, "where is %s", configpath.c_str());
+            return false;
+        }
+
+        TiXmlElement * root = config.RootElement();
+        tassert(root, "wtf");
+        TiXmlElement * env = root->FirstChildElement("env");
+        tassert(env && env->Attribute("path"), "wtf");
+        _env = env->Attribute("path");
+
+        return false;
     }
 
     bool core::launchUdpSession(iUdpSession * session, const char * ip, const s32 port) {

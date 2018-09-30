@@ -1,11 +1,8 @@
 #ifndef __tqcsort_h__
 #define __tqcsort_h__
 
-#include "MultiSys.h"
+#include "multisys.h"
 #include <set>
-
-
-
 
 namespace tlib {
     class sort_pool;

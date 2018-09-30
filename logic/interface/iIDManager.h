@@ -3,9 +3,9 @@
 
 #include "api.h"
 
-class iIDManager : public iModule {
+class iIdmanager : public iModule {
 public:
-    virtual ~iIDManager() {}
+    virtual ~iIdmanager() {}
 
     virtual void setmask(const u16 mask) = 0;
     virtual u64 create() = 0;

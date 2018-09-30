@@ -3,7 +3,7 @@
 
 #include "header.h"
 
-class idmanager : public iIDManager {
+class idmanager : public iIdmanager {
 public:
     virtual ~idmanager() {}
 

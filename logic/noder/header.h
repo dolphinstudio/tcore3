@@ -3,7 +3,7 @@
 
 #include "iNoder.h"
 #include "iSession.h"
-#include "iIDManager.h"
+#include "iIdmanager.h"
 
 #include "Noder.pb.h"
 
@@ -39,7 +39,7 @@ extern id_session_map g_id_session_map;
 extern name_id_session_map g_name_id_sessions_map;
 
 extern api::iCore * g_core;
-extern iIDManager * g_idmanager;
+extern iIdmanager * g_idmanager;
 
 namespace timer {
     namespace id {

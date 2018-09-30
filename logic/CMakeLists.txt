@@ -14,7 +14,9 @@ set(common
 
 set(interface
 	${interface}
-    "${PROJECT_SOURCE_DIR}/logic/interface/iIDManager.h"
+    "${PROJECT_SOURCE_DIR}/logic/interface/iIdmanager.h"
+    "${PROJECT_SOURCE_DIR}/logic/interface/iEvent.h"
+    "${PROJECT_SOURCE_DIR}/logic/interface/iModel.h"
     "${PROJECT_SOURCE_DIR}/logic/interface/iMaster.h"
     "${PROJECT_SOURCE_DIR}/logic/interface/iNoder.h"
     "${PROJECT_SOURCE_DIR}/logic/interface/iSession.h"
@@ -60,6 +62,8 @@ ENDIF()
 ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/master)
 ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/noder)
 ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/idmanager)
+ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/event)
+ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/model)
 ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/tcptester)
 ##ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/udptester)
 ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/kcper)

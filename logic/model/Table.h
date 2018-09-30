@@ -1,51 +1,51 @@
-#ifndef __Table_h__
-#define __Table_h__
+#ifndef __table_h__
+#define __table_h__
 
-#include "IModel.h"
+#include "iModel.h"
 #include <vector>
 #include <unordered_map>
 using namespace std;
 
-class Row;
-class MemonyLayout;
-typedef vector<Row *> ROWS;
-typedef unordered_map<s64, s32> INT_KEY_MAP;
-typedef unordered_map<std::string, s32> STRING_KEY_MAP;
+class row;
+class mlayout;
+typedef vector<row *> rows;
+typedef unordered_map<s64, s32> int_key_map;
+typedef unordered_map<std::string, s32> string_key_map;
 
-class Table : public ITable {
+class table : public iTable {
 public:
     const std::string _file;
     const s32 _line;
     const std::string _name;
 
-    Table(IUnit * host, const MemonyLayout * layout, const dc::layout * key, const char * file, const s32 line);
-    virtual ~Table();
+    table(iUnit * host, const mlayout * layout, const dc::layout * key, const char * file, const s32 line);
+    virtual ~table();
 
-    virtual IUnit * GetHost();
+    virtual iUnit * getHoster();
 
-    virtual s32 RowCount() const;
-    virtual void ClearRows();
+    virtual s32 rowCount() const;
+    virtual void clear();
     
-    bool AddRowFromBlob(const void * data, const s32 size);
+    bool addRowFromBlob(const void * data, const s32 size);
 
-    virtual IRow * FindRow(const s64 key) const;
-    virtual IRow * FindRow(const char * key) const;
-    virtual IRow * GetRow(const s32 row) const;
+    virtual iRow * findRow(const s64 key) const;
+    virtual iRow * findRow(const char * key) const;
+    virtual iRow * getRow(const s32 row) const;
 
-    virtual IRow * AddRow(const char * file, const s32 line);
-    virtual IRow * AddRowKeyInt64(const s64 key, const char * file, const s32 line);
-    virtual IRow * AddRowKeyString(const char * key, const char * file, const s32 line);
+    virtual iRow * addRow(const char * file, const s32 line);
+    virtual iRow * addRowKeyInt64(const s64 key, const char * file, const s32 line);
+    virtual iRow * addRowKeyString(const char * key, const char * file, const s32 line);
 
-    virtual bool DelRow(const s32 index);
-    virtual bool SwapRow(const s32 src, const s32 dst);
+    virtual bool delRow(const s32 index);
+    virtual bool swapRow(const s32 src, const s32 dst);
 private:
-    const MemonyLayout * _layout;
+    const mlayout * _layout;
     const dc::layout * const _key;
-    IUnit * const _host;
+    iUnit * const _host;
 
-    ROWS _rows;
-    INT_KEY_MAP _key_int;
-    STRING_KEY_MAP _key_string;
+    rows _rows;
+    int_key_map _key_int;
+    string_key_map _key_string;
 };
 
-#endif //__Table_h__
+#endif //__table_h__

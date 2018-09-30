@@ -4,7 +4,7 @@
  *
  * Created on March 3, 2015, 10:44 AM
  */
-#include "Model.h"
+#include "model.h"
 
-GET_DLL_ENTRANCE;
-CREATE_MODULE(Model);
+get_dll_instance;
+create_module(model);

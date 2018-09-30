@@ -11,6 +11,7 @@ namespace tcore {
         virtual ~core() {}
 
         virtual iModule * findModule(const std::string & name);
+        virtual const char * getEnv();
 
         void parseArgs(int argc, const char ** argv);
         virtual const char * getArgs(const char * name);
@@ -19,6 +20,8 @@ namespace tcore {
         virtual const char * getCorename() { return _core_name.c_str(); }
 
         static core * getInstance();
+        bool launch();
+
         virtual bool launchUdpSession(iUdpSession * session, const char * ip, const s32 port);
         virtual bool launchTcpSession(iTcpSession * session, const char * ip, const int port, int max_ss, int max_rs);
         virtual bool launchTcpServer(iTcpServer * server, const char * ip, const int port, int max_ss, int max_rs);
@@ -38,6 +41,7 @@ namespace tcore {
         void loop();
     private:
         std::string _core_name;
+        std::string _env;
     };
 }
 
