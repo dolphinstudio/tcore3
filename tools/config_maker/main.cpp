@@ -340,16 +340,18 @@ int main() {
     std::string iconfig;
     std::string oconfig;
 
+    content << "#ifndef __auto_config_h__ \n";
+    content << "#define __auto_config_h__ \n";
     content << "// tools from sisyphus \n";
     content << "#include <map>\n" << "#include <string>\n\n" << "#include \"Tools.h\"\n"<< "#include \"tinyxml/tinyxml.h\"\n\n" << "using namespace tools;\nusing namespace std;\n\n";
 
     macro_extern << "#define config_init_macro ";
     function << "inline void initconfig(const std::string & path) {\n";
-    iconfig << "class IConfig {\n";
+    iconfig << "class iConfig {\n";
     iconfig << "public:\n";
-    iconfig << "    virtual ~IConfig() {}\n";
+    iconfig << "    virtual ~iConfig() {}\n";
 
-    oconfig << "#define define_oconfig class OConfig : public IConfig { \\\n";
+    oconfig << "#define define_oconfig class OConfig : public iConfig { \\\n";
     oconfig << "public: \\\n";
     oconfig << "    virtual ~OConfig() {} \\\n";
 
@@ -387,6 +389,8 @@ int main() {
             content << "\n";
         }
     }
+
+    content << "#endif //__auto_config_h__";
 
     function << "}\n";
     iconfig << "};\n";

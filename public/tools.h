@@ -17,6 +17,10 @@ namespace tools {
             tassert(__n <= __max, "over flow");
             memcpy(__dest, __src, (__max >= __n) ? (__n) : (__max));
         }
+
+        inline bool safeStrcmp(const char *__restrict __dest, const char *__restrict __src) {
+            return !strcmp(__dest, __src);
+        }
     }
     
     namespace system {

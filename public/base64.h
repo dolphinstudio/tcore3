@@ -1,10 +1,11 @@
-#ifndef __base64_h__
-#define __base64_h__
-#include "multisys.h"
+#ifndef __Base64_h__
+#define __Base64_h__
 
-namespace tools {
-    void base64DecodeBlock(u8 * dst, const s8 * src);
-    s32 base64Decode(u8 * dst, s32 maxSize, const s8 * src, s32 size);
-    s32 base64Encode(s8 * dst, s32 maxSize, const u8 * src, s32 size);
+#include <string>
+
+namespace tlib {
+    std::string base64_encode(unsigned char const*, unsigned int len);
+    std::string base64_decode(std::string const& s);
 }
-#endif //
+
+#endif /* __Base64_h__ */

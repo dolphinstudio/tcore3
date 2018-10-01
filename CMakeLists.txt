@@ -90,6 +90,8 @@ SET(public
     "${PROJECT_SOURCE_DIR}/public/cbuffer.h"
     "${PROJECT_SOURCE_DIR}/public/md5.h"
     "${PROJECT_SOURCE_DIR}/public/md5.cpp"
+    "${PROJECT_SOURCE_DIR}/public/sha1.h"
+    "${PROJECT_SOURCE_DIR}/public/sha1.cpp"
     "${PROJECT_SOURCE_DIR}/public/blockallocator.h"
     "${PROJECT_SOURCE_DIR}/public/blockallocator.cpp"
 )
@@ -115,6 +117,8 @@ SET(public
     "${PROJECT_SOURCE_DIR}/public/cbuffer.h"
     "${PROJECT_SOURCE_DIR}/public/md5.h"
     "${PROJECT_SOURCE_DIR}/public/md5.cpp"
+    "${PROJECT_SOURCE_DIR}/public/sha1.h"
+    "${PROJECT_SOURCE_DIR}/public/sha1.cpp"
     "${PROJECT_SOURCE_DIR}/public/blockallocator.h"
     "${PROJECT_SOURCE_DIR}/public/blockallocator.cpp"
 )

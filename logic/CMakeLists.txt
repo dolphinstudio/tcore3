@@ -14,12 +14,17 @@ set(common
 
 set(interface
 	${interface}
+    "${PROJECT_SOURCE_DIR}/logic/interface/attribute.h"
+    "${PROJECT_SOURCE_DIR}/logic/interface/auto_config.h"
     "${PROJECT_SOURCE_DIR}/logic/interface/iIdmanager.h"
     "${PROJECT_SOURCE_DIR}/logic/interface/iEvent.h"
     "${PROJECT_SOURCE_DIR}/logic/interface/iModel.h"
     "${PROJECT_SOURCE_DIR}/logic/interface/iMaster.h"
     "${PROJECT_SOURCE_DIR}/logic/interface/iNoder.h"
     "${PROJECT_SOURCE_DIR}/logic/interface/iSession.h"
+    "${PROJECT_SOURCE_DIR}/logic/interface/iWebSocket.h"
+    "${PROJECT_SOURCE_DIR}/logic/interface/iRedis.h"
+    "${PROJECT_SOURCE_DIR}/logic/interface/iConfiger.h"
 )
 
 set(nodeproto
@@ -39,7 +44,13 @@ IF(WIN32)
         debug "${PROJECT_SOURCE_DIR}/library/debug/libprotobuf.lib"
         optimized "${PROJECT_SOURCE_DIR}/library/release/libprotobuf.lib"
     )
-
+    
+    SET(libredis  
+        debug "${PROJECT_SOURCE_DIR}/library/debug/hiredis.lib"
+        debug "${PROJECT_SOURCE_DIR}/library/debug/Win32_Interop.lib"
+        optimized "${PROJECT_SOURCE_DIR}/library/release/hiredis.lib"
+        optimized "${PROJECT_SOURCE_DIR}/library/release/Win32_Interop.lib"
+    )
 ELSEIF(UNIX)
     SET(libprotobuf
         debug "/usr/local/lib64/libprotobuf.a"
@@ -67,3 +78,6 @@ ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/model)
 ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/tcptester)
 ##ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/udptester)
 ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/kcper)
+ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/websocket)
+ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/redis)
+ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/configer)

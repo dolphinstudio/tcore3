@@ -6,6 +6,10 @@
 
 namespace tlib{
 #ifdef WIN32
+#ifndef _WINDOWS_  
+#define WIN32_LEAN_AND_MEAN
+#include <windows.h>
+#endif
 #include <synchapi.h>
     class mutexlock : public ilock {
     public:

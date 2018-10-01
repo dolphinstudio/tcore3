@@ -1,119 +1,92 @@
-#include "base64.h"
+#include "Base64.h"
+#include <iostream>
 
-namespace tools {
-    void base64DecodeBlock(u8 * dst, const s8 * src) {
-        u32 x = 0;
-        for (s32 i = 0; i < 4; ++i) {
-            if (src[i] >= 'A' && src[i] <= 'Z')
-                x = (x << 6) + (u32)(src[i] - 'A' + 0);
-            else if (src[i] >= 'a' && src[i] <= 'z')
-                x = (x << 6) + (u32)(src[i] - 'a' + 26);
-            else if (src[i] >= '0' && src[i] <= '9')
-                x = (x << 6) + (u32)(src[i] - '0' + 52);
-            else if (src[i] == '+')
-                x = (x << 6) + 62;
-            else if (src[i] == '/')
-                x = (x << 6) + 63;
-            else if (src[i] == '=')
-                x = (x << 6);
-        }
+namespace tlib {
+    static const std::string base64_chars =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        "abcdefghijklmnopqrstuvwxyz"
+        "0123456789+/";
 
-        dst[2] = (u8)(x & 255);
-        x >>= 8;
-        dst[1] = (u8)(x & 255);
-        x >>= 8;
-        dst[0] = (u8)(x & 255);
+
+    static inline bool is_base64(unsigned char c) {
+        return (isalnum(c) || (c == '+') || (c == '/'));
     }
 
-    // BASE64解码
-    s32 base64Decode(u8 * dst, s32 maxSize, const s8 * src, s32 size) {
-        s32 len = 0;
-        while ((len < size) && (src[len] != '='))
-            ++len;
+    std::string base64_encode(unsigned char const* bytes_to_encode, unsigned int in_len) {
+        std::string ret;
+        int i = 0;
+        int j = 0;
+        unsigned char char_array_3[3];
+        unsigned char char_array_4[4];
 
-        s32 equalNum = 0;
-        while ((len + equalNum < size) && (src[len + equalNum] == '='))
-            ++equalNum;
+        while (in_len--) {
+            char_array_3[i++] = *(bytes_to_encode++);
+            if (i == 3) {
+                char_array_4[0] = (char_array_3[0] & 0xfc) >> 2;
+                char_array_4[1] = ((char_array_3[0] & 0x03) << 4) + ((char_array_3[1] & 0xf0) >> 4);
+                char_array_4[2] = ((char_array_3[1] & 0x0f) << 2) + ((char_array_3[2] & 0xc0) >> 6);
+                char_array_4[3] = char_array_3[2] & 0x3f;
 
-        s32 blockNum = (len + equalNum) / 4;
-        tassert(blockNum * 3 - equalNum <= maxSize, "decode over flow");
-        if (blockNum * 3 - equalNum > maxSize)
-            return maxSize;
-
-        for (s32 i = 0; i < blockNum - 1; ++i) {
-            base64DecodeBlock(dst, src);
-
-            dst += 3;
-            src += 4;
+                for (i = 0; (i < 4); i++)
+                    ret += base64_chars[char_array_4[i]];
+                i = 0;
+            }
         }
 
-        u8 lastBlock[3];
-        base64DecodeBlock(lastBlock, src);
+        if (i)
+        {
+            for (j = i; j < 3; j++)
+                char_array_3[j] = '\0';
 
-        for (s32 i = 0; i < 3 - equalNum; ++i)
-            dst[i] = lastBlock[i];
+            char_array_4[0] = (char_array_3[0] & 0xfc) >> 2;
+            char_array_4[1] = ((char_array_3[0] & 0x03) << 4) + ((char_array_3[1] & 0xf0) >> 4);
+            char_array_4[2] = ((char_array_3[1] & 0x0f) << 2) + ((char_array_3[2] & 0xc0) >> 6);
 
-        return blockNum * 3 - equalNum;
+            for (j = 0; (j < i + 1); j++)
+                ret += base64_chars[char_array_4[j]];
+
+            while ((i++ < 3))
+                ret += '=';
+
+        }
+
+        return ret;
     }
 
-    // BASE64编码
-    s32 base64Encode(s8 * dst, s32 maxSize, const u8 * src, s32 size) {
-        static char table64[] =
-            "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+    std::string base64_decode(std::string const& encoded_string) {
+        int in_len = encoded_string.size();
+        int i = 0;
+        int j = 0;
+        int in_ = 0;
+        unsigned char char_array_4[4], char_array_3[3];
+        std::string ret;
 
-        tassert(size > 0, "empty source data");
-        tassert(maxSize >= (size / 3 + (size % 3 == 0 ? 0 : 1)) * 4 + 1, "empty source data");
-        if (size <= 0)
-            return 0;
-        if (maxSize < (size / 3 + (size % 3 == 0 ? 0 : 1)) * 4 + 1)
-            return maxSize;
+        while (in_len-- && (encoded_string[in_] != '=') && is_base64(encoded_string[in_])) {
+            char_array_4[i++] = encoded_string[in_]; in_++;
+            if (i == 4) {
+                for (i = 0; i < 4; i++)
+                    char_array_4[i] = base64_chars.find(char_array_4[i]);
 
-        const u8 * in = src;
-        s8* out = dst;
+                char_array_3[0] = (char_array_4[0] << 2) + ((char_array_4[1] & 0x30) >> 4);
+                char_array_3[1] = ((char_array_4[1] & 0xf) << 4) + ((char_array_4[2] & 0x3c) >> 2);
+                char_array_3[2] = ((char_array_4[2] & 0x3) << 6) + char_array_4[3];
 
-        while (size > 0) {
-            u8 ibuf[3];
-            u8 obuf[4];
-            s32 inNum = 0;
-
-            for (s32 i = 0; i < 3; ++i) {
-                if (size > 0) {
-                    inNum++;
-                    ibuf[i] = *(in++);
-                    --size;
-                }
-                else
-                    ibuf[i] = 0;
+                for (i = 0; (i < 3); i++)
+                    ret += char_array_3[i];
+                i = 0;
             }
-
-            obuf[0] = (ibuf[0] & 0xFC) >> 2;
-            obuf[1] = ((ibuf[0] & 0x03) << 4) | ((ibuf[1] & 0xF0) >> 4);
-            obuf[2] = ((ibuf[1] & 0x0F) << 2) | ((ibuf[2] & 0xC0) >> 6);
-            obuf[3] = ibuf[2] & 0x3F;
-
-            switch (inNum) {
-            case 1:
-                out[0] = table64[obuf[0]];
-                out[1] = table64[obuf[1]];
-                out[2] = '=';
-                out[3] = '=';
-                break;
-            case 2:
-                out[0] = table64[obuf[0]];
-                out[1] = table64[obuf[1]];
-                out[2] = table64[obuf[2]];
-                out[3] = '=';
-                break;
-            default:
-                out[0] = table64[obuf[0]];
-                out[1] = table64[obuf[1]];
-                out[2] = table64[obuf[2]];
-                out[3] = table64[obuf[3]];
-                break;
-            }
-            out += 4;
         }
-        *out = 0;
-        return (s32)(out - dst);
+
+        if (i) {
+            for (j = 0; j < i; j++)
+                char_array_4[j] = base64_chars.find(char_array_4[j]);
+
+            char_array_3[0] = (char_array_4[0] << 2) + ((char_array_4[1] & 0x30) >> 4);
+            char_array_3[1] = ((char_array_4[1] & 0xf) << 4) + ((char_array_4[2] & 0x3c) >> 2);
+
+            for (j = 0; (j < i - 1); j++) ret += char_array_3[j];
+        }
+
+        return ret;
     }
 }
