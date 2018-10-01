@@ -69,6 +69,7 @@ SET(zlib
 
 IF (WIN32)
 SET(public
+    "${PROJECT_SOURCE_DIR}/public/cfile.h"
     "${PROJECT_SOURCE_DIR}/public/base64.h"
     "${PROJECT_SOURCE_DIR}/public/base64.cpp"
     "${PROJECT_SOURCE_DIR}/public/autolock.h"
@@ -95,6 +96,7 @@ SET(public
 ELSEIF (APPLE)
 ELSEIF (UNIX)
 SET(public
+    "${PROJECT_SOURCE_DIR}/public/cfile.h"
     "${PROJECT_SOURCE_DIR}/public/base64.h"
     "${PROJECT_SOURCE_DIR}/public/base64.cpp"
     "${PROJECT_SOURCE_DIR}/public/autolock.h"
@@ -130,6 +132,7 @@ ELSEIF(UNIX)
     )
 ENDIF()
 
+ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/tools)
 ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic)
 ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/tcore3)
 

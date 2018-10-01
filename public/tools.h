@@ -69,6 +69,8 @@ namespace tools {
 
     namespace file {
         const char * getApppath();
+
+        bool exists(const std::string & path);
         bool mkdir(const char * path);
 
         typedef std::vector<std::string> opaths, onames;
@@ -104,6 +106,9 @@ namespace tools {
 
         return res.size();
     }
+
+    const std::string toUtf8(const char* font);
+    const std::string toMultiString(const wchar_t * pwszUnicode);
 
     inline bool stringAsBool(const char * b) {
         return !strcmp(b, "true");
@@ -142,6 +147,16 @@ namespace tools {
         return str;
     }
 
+    inline void stringReplase(std::string & content, const std::string & src, const std::string & dst) {
+        std::string::size_type pos = 0;
+        std::string::size_type a = src.size();
+        std::string::size_type b = dst.size();
+        while ((pos = content.find(src, pos)) != std::string::npos) {
+            content.replace(pos, a, dst);
+            pos += b;
+        }
+    }
+
     static s32 rand(s32 range) {
         if (0 == range) { return 0; }
         static u64 s_seed = time::getMillisecond();
@@ -149,5 +164,27 @@ namespace tools {
         return s_seed % range;
     }
 }
+
+
+inline std::string & operator<<(std::string & target, const std::string & value) {
+    target += value;
+    return target;
+}
+
+inline std::string & operator<<(std::string & target, const s32 value) {
+    target += tools::intAsString(value);
+    return target;
+}
+
+inline std::string & operator<<(std::string & target, const s64 value) {
+    target += tools::int64AsString(value);
+    return target;
+}
+
+inline std::string & operator<<(std::string & target, const double value) {
+    target += tools::floatAsString(value);
+    return target;
+}
+
 
 #endif //__tools_h__

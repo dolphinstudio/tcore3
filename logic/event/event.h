@@ -1,5 +1,5 @@
-#ifndef __Event_h__
-#define __Event_h__
+#ifndef __event_h__
+#define __event_h__
 
 #include "iEvent.h"
 #include <list>
@@ -9,6 +9,8 @@ class event : public iEvent {
     typedef std::list<iEventer *> eventer_list;
     typedef std::unordered_map<s32, eventer_list> eventer_map;
 public:
+    virtual ~event() {}
+
     virtual bool initialize(api::iCore * core);
     virtual bool launch(api::iCore * core);
     virtual bool destroy(api::iCore * core);
@@ -19,4 +21,4 @@ private:
     eventer_map _event_pool;
 };
 
-#endif //__Event_h__
+#endif //__event_h__
