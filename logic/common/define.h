@@ -1,7 +1,7 @@
 #ifndef __define_h__
 #define __define_h__
 
-#include "MultiSys.h"
+#include "multisys.h"
 
 #define SECOND 1000
 #define MIN (60 * SECOND)

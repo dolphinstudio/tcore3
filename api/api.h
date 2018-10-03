@@ -325,7 +325,6 @@ factroy##name factroy##name(s_modules);
 #define get_dll_instance \
     static iModule * s_modules = nullptr; \
     extern "C" iModule * getModules() { \
-        srand(tools::time::getMillisecond()); \
         return s_modules; \
     }
 #endif //WIN32

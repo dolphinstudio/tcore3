@@ -8,12 +8,13 @@
 #include "noder.pb.h"
 
 #include "tinyxml/tinyxml.h"
-#include "Tools.h"
+#include "tools.h"
 #include "tqcsort.h"
 
 #include <map>
 #include <set>
 #include <string>
+#include <list>
 
 typedef std::set<std::string> target_set;
 extern target_set g_target_set;

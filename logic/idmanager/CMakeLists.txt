@@ -3,7 +3,7 @@
 #created:%
         
 SET(idmanager
-    "${PROJECT_SOURCE_DIR}/logic/idmanager/Header.h"
+    "${PROJECT_SOURCE_DIR}/logic/idmanager/header.h"
     "${PROJECT_SOURCE_DIR}/logic/idmanager/idmanager.h"
     "${PROJECT_SOURCE_DIR}/logic/idmanager/idmanager.cpp"
     "${PROJECT_SOURCE_DIR}/logic/idmanager/main.cpp"
