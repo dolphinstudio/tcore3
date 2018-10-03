@@ -143,6 +143,7 @@ namespace tcore {
     void core::loop() {
         getNetInstance()->deal();
         timermgr::getInstance()->update(5);
+        httper::getInstance()->update();
     }
 
 }

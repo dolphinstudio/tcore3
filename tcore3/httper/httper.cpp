@@ -120,7 +120,13 @@ namespace tcore {
             msleep(1);
         }
 
-        process(0);
+        httpRequest * request;
+        while (s_response_queue.tryPull(request)) {
+            request->onResponse();
+            request->release();
+            request = nullptr;
+        }
+
         DEL[] s_request_queue;
     }
 
@@ -136,15 +142,15 @@ namespace tcore {
         }
     }
 
-    void httper::process(const s32 overtime) {
-        s64 tick = tools::time::getMillisecond();
+    void httper::update() {
+        s64 tick = tools::time::getMicrosecond();
         httpRequest * request;
         while (s_response_queue.tryPull(request)) {
             request->onResponse();
             request->release();
             request = nullptr;
 
-            if (tools::time::getMillisecond() - tick >= overtime && overtime != 0) {
+            if (tools::time::getMicrosecond() - tick >= 1000) {
                 return;
             }
         }

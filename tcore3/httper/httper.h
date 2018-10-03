@@ -10,7 +10,7 @@ namespace tcore {
         static httper * getInstance();
 
         virtual bool launch() { return true; }
-        virtual void process(const s32 overtiem);
+        virtual void update();
         virtual void shutdown();
 
         virtual void run();
