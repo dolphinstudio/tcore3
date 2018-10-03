@@ -1,7 +1,0 @@
-2018-10-03 15:25:40|trace:/opt/github/tcore3/logic/noder/noder.cpp:227"on assigne id 3, gate start listen 127.0.0.1:31000"
-2018-10-03 15:25:40|trace:/opt/github/tcore3/logic/noder/noderSession.cpp:10"noder report to match area 1 id 2 127.0.0.1:21000"
-2018-10-03 15:25:40|trace:/opt/github/tcore3/logic/gate/gate.cpp:142"relation id 2 127.0.0.1:21000 report"
-2018-10-03 15:25:40|trace:/opt/github/tcore3/logic/noder/noderSession.cpp:10"noder report to relation area 1 id 0 127.0.0.1:11000"
-2018-10-03 15:25:40|trace:/opt/github/tcore3/logic/gate/gate.cpp:136"relation id 0 127.0.0.1:11000 report"
-2018-10-03 15:25:43|trace:/opt/github/tcore3/logic/noder/noderSession.cpp:10"noder report to gate area 1 id 1 127.0.0.1:31001"
-2018-10-03 15:25:43|trace:/opt/github/tcore3/logic/noder/noderSession.cpp:10"noder report to logicer area 1 id 4 127.0.0.1:12000"
