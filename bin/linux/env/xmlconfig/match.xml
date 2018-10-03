@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<root>
+    <match id="1.000000" cup_min="0.000000" cup_max="100.000000" />
+    <match id="2.000000" cup_min="100.000000" cup_max="200.000000" />
+    <match id="3.000000" cup_min="200.000000" cup_max="500.000000" />
+    <match id="4.000000" cup_min="500.000000" cup_max="1000.000000" />
+    <match id="5.000000" cup_min="1000.000000" cup_max="99999.000000" />
+</root>

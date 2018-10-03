@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root parent="sceneeffect">
+  <attribute name="scene" type="s64" visual="false" share="false" save="false" important="false" />
+  <attribute name="number" type="s64" visual="false" share="false" save="false" important="false" />
+  <attribute name="length" type="float" visual="false" share="false" save="false" important="false" />
+  <attribute name="combiner" type="s64" visual="false" share="false" save="false" important="false" />
+
+  <table name="top">
+    <column name="id" type="s64" key="true" />
+  </table>
+  <table name="bottom">
+    <column name="id" type="s64" key="true" />
+  </table>
+</root>

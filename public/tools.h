@@ -2,6 +2,7 @@
 #define __tools_h__
 
 #include "multisys.h"
+#include <math.h>
 #include <chrono>
 #include <string>
 #include <vector>

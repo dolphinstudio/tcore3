@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root parent="base">
+  <attribute name="close" type="s64" visual="false" share="false" save="false" important="false" />
+</root>

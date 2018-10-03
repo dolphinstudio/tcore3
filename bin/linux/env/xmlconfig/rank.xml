@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<root>
+    <rank id="1.000000" name="学徒" map="101.000000" cups="0.000000" />
+    <rank id="2.000000" name="门生" map="101.000000" cups="10.000000" />
+    <rank id="3.000000" name="高手" map="101.000000" cups="20.000000" />
+    <rank id="4.000000" name="大师" map="101.000000" cups="50.000000" />
+    <rank id="5.000000" name="长老" map="101.000000" cups="150.000000" />
+    <rank id="6.000000" name="盟主" map="101.000000" cups="500.000000" />
+    <rank id="7.000000" name="大力神" map="101.000000" cups="2000.000000" />
+</root>

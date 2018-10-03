@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<root>
+    <food id="101.000000" name="一大块肉" exp="50.000000" res="" dsc="吃下这块肉，增加50点经验" />
+</root>

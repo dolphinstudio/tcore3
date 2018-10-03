@@ -1,6 +1,10 @@
 #cmake file for project core
 #author:^
 #created:%
+
+INCLUDE_DIRECTORIES(
+    "${PROJECT_SOURCE_DIR}/logic/redis/"
+)
         
 SET(redis
     "${PROJECT_SOURCE_DIR}/logic/redis/header.h"

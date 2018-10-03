@@ -1,7 +1,7 @@
 #ifndef __redis_def_h__
 #define __redis_def_h__
 
-#include "Tools.h"
+#include "tools.h"
 using namespace tools;
 
 namespace redis {

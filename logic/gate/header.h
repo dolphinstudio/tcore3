@@ -17,7 +17,7 @@
 
 #include "json/json.h"
 
-#include "UUID.h"
+#include "uuid.h"
 
 #include <unordered_map>
 using namespace std;

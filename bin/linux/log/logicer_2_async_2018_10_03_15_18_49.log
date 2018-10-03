@@ -1,0 +1,4 @@
+2018-10-03 15:18:49|trace:/opt/github/tcore3/logic/noder/noder.cpp:190"connected master 127.0.0.1:32580 report self info 127.0.0.1:12000"
+2018-10-03 15:18:49|trace:/opt/github/tcore3/logic/noder/noder.cpp:227"on assigne id 2, logicer start listen 127.0.0.1:12000"
+2018-10-03 15:18:52|trace:/opt/github/tcore3/logic/noder/noderSession.cpp:10"noder report to relation area 1 id 0 127.0.0.1:11000"
+2018-10-03 15:18:52|trace:/opt/github/tcore3/logic/noder/noderSession.cpp:10"noder report to match area 1 id 1 127.0.0.1:21000"

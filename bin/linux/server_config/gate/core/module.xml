@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root path="./">
+    <module name="noder" />
+    <module name="idmanager" />
+    <module name="gate" />
+    <module name="event" />
+    <module name="webSocket" />
+    <module name="redis" />
+</root>

@@ -1,0 +1,6 @@
+2018-10-03 15:25:39|trace:/opt/github/tcore3/logic/master/master.cpp:38"master start listen at port 32580"
+2018-10-03 15:25:40|trace:/opt/github/tcore3/logic/master/masterSession.cpp:53"on report relation area 1 id 0 127.0.0.1:11000"
+2018-10-03 15:25:40|trace:/opt/github/tcore3/logic/master/masterSession.cpp:53"on report gate area 1 id 1 127.0.0.1:31001"
+2018-10-03 15:25:40|trace:/opt/github/tcore3/logic/master/masterSession.cpp:53"on report match area 1 id 2 127.0.0.1:21000"
+2018-10-03 15:25:40|trace:/opt/github/tcore3/logic/master/masterSession.cpp:53"on report gate area 1 id 3 127.0.0.1:31000"
+2018-10-03 15:25:40|trace:/opt/github/tcore3/logic/master/masterSession.cpp:53"on report logicer area 1 id 4 127.0.0.1:12000"

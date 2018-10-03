@@ -95,7 +95,7 @@ namespace tools {
                     /* display file name with proper tab */
                     //printf("%s/%s\n", dirname, dirp->d_name);
                     if (strcmp(get_filename_ext(dirp->d_name), extension) == 0) {
-                        paths.push_back(string(dicpath) + "/" + dirp->d_name);
+                        paths.push_back(std::string(dicpath) + "/" + dirp->d_name);
                         char name[255];
                         strncpy(name, dirp->d_name, sizeof(name));
                         char * dot = strrchr(name, '.');

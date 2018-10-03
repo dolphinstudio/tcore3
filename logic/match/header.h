@@ -16,7 +16,7 @@
 #include "noder.pb.h"
 #include "game.pb.h"
 
-#include "UUID.h"
+#include "uuid.h"
 
 extern api::iCore * g_core;
 

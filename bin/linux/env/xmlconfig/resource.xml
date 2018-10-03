@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<root>
+    <resource id="1101.000000" type="1.000000" res="tiger" actionname="default" loop="true" zorder="0.000000" />
+    <resource id="1102.000000" type="1.000000" res="boar" actionname="default" loop="true" zorder="0.000000" />
+    <resource id="1103.000000" type="1.000000" res="huskie" actionname="default" loop="true" zorder="0.000000" />
+    <resource id="1104.000000" type="1.000000" res="snow_monster" actionname="default" loop="true" zorder="0.000000" />
+    <resource id="2101.000000" type="0.000000" res="tiger" actionname="default" loop="true" zorder="0.000000" />
+    <resource id="2102.000000" type="0.000000" res="boar" actionname="default" loop="true" zorder="0.000000" />
+    <resource id="2103.000000" type="0.000000" res="huskie" actionname="default" loop="true" zorder="0.000000" />
+    <resource id="2104.000000" type="0.000000" res="snow_monster" actionname="default" loop="true" zorder="0.000000" />
+    <resource id="3001.000000" type="1.000000" res="arise" actionname="default" loop="true" zorder="0.000000" />
+    <resource id="3002.000000" type="1.000000" res="forward" actionname="default" loop="true" zorder="0.000000" />
+    <resource id="3003.000000" type="1.000000" res="release" actionname="default" loop="true" zorder="0.000000" />
+    <resource id="3004.000000" type="1.000000" res="tiger_paw" actionname="default" loop="true" zorder="0.000000" />
+    <resource id="3005.000000" type="1.000000" res="ice" actionname="default" loop="true" zorder="0.000000" />
+    <resource id="3006.000000" type="1.000000" res="ice_map" actionname="default" loop="true" zorder="0.000000" />
+</root>

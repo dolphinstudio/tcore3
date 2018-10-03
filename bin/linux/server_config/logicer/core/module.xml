@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root path="./">
+  <module name="noder" />
+  <module name="idmanager" />
+  <module name="logicer" />
+  <module name="configer" />
+  <module name="event" />
+  <module name="model" />
+  <module name="buff" />
+  <module name="cards" />
+  <module name="game" />
+  <module name="ai" />
+  <module name="scene" />
+  <module name="effect" />
+  <module name="skill" />
+  <module name="redis" />
+  <module name="storage" />
+</root>
