@@ -175,21 +175,21 @@ message oServerRemoveSceneEffect {
 }
 
 message oServerCastSkillPush {
-    oIdentity caster = 1;           //Ê©·¨Õß
-    int32 skillid = 2;          //¼¼ÄÜÅäÖÃid
-    repeated oIdentity roles = 3;   //¼¼ÄÜÄ¿±ê
+    oIdentity caster = 1;           //Ê©ï¿½ï¿½ï¿½ï¿½
+    int32 skillid = 2;          //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½id
+    repeated oIdentity roles = 3;   //ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½
 }
 
 message oServerCreateBuff {
-    oIdentity buffid = 1;           //buff ¶ÔÏóid
-    int32 configid = 2;         //buff ÅäÖÃid
-    repeated oIdentity roles = 3;   //ÄÄĞ©½ÇÉ«ÉÏÁËÕâ¸öbuff
+    oIdentity buffid = 1;           //buff ï¿½ï¿½ï¿½ï¿½id
+    int32 configid = 2;         //buff ï¿½ï¿½ï¿½ï¿½id
+    repeated oIdentity roles = 3;   //ï¿½ï¿½Ğ©ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½buff
 }
 
 message oServerRemoveBuff {
-    oIdentity buffid = 1;           //buff ¶ÔÏóid
-    int32 configid = 2;         //buff ÅäÖÃid
-    repeated oIdentity roles = 3;   //ÄÄĞ©½ÇÉ«ÉÏÁËÕâ¸öbuff
+    oIdentity buffid = 1;           //buff ï¿½ï¿½ï¿½ï¿½id
+    int32 configid = 2;         //buff ï¿½ï¿½ï¿½ï¿½id
+    repeated oIdentity roles = 3;   //ï¿½ï¿½Ğ©ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½buff
 }
 
 message oServerResumeGamePush {

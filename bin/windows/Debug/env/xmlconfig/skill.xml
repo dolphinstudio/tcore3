@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<root>
+    <skill id="101.000000" type="1.000000" advantage_or_inferiority="4.000000" cast_type="2.000000" cast_target="4.000000" cast_delay="0.000000" name="制裁" sound="effect_s1.mp3" des="与敌人正面接触时，会直接把比自己轻的角斗士扔出场外" res="3004,1,0,0" action="" buff="" scene_effect="" />
+    <skill id="102.000000" type="0.000000" advantage_or_inferiority="0.000000" cast_type="3.000000" cast_target="1.000000" cast_delay="0.000000" name="冲锋" sound="effect_s2.mp3" des="加入对抗后，带领整个队伍向前冲锋，快速推进一段距离" res="" action="" buff="102,1" scene_effect="" />
+    <skill id="103.000000" type="0.000000" advantage_or_inferiority="0.000000" cast_type="3.000000" cast_target="2.000000" cast_delay="0.000000" name="鼓舞" sound="effect_s3.mp3" des="加入对抗后，发出嚎叫，鼓舞前方的队友，增加他们的体重" res="3003,1,0,0;3001,4,0,0" action="" buff="103,3" scene_effect="" />
+    <skill id="104.000000" type="0.000000" advantage_or_inferiority="0.000000" cast_type="3.000000" cast_target="5.000000" cast_delay="0.000000" name="冰封" sound="effect_s4.mp3" des="加入对抗后，短暂冰冻住这条路线" res="" action="" buff="104,5" scene_effect="104.000000" />
+</root>

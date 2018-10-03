@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root parent="sceneeffect">
+  <attribute name="config" type="s64" visual="true" share="true" save="false" important="false" />
+  <attribute name="orbit_count" type="s64" visual="true" share="true" save="false" important="false" />
+  <attribute name="orbit_length" type="float" visual="true" share="true" save="false" important="false" />
+  <attribute name="res" type="string" size="128" visual="true" share="true" save="false" important="false" />
+  <attribute name="start_tick" type="s64" visual="false" share="false" save="false" important="false" />
+  <attribute name="game_time" type="s64" visual="false" share="false" save="false" important="false" />
+  
+  <table name="member">
+    <column name="id" type="s64" key="true" />
+    <column name="gate" type="s64" />
+    <column name="state" type="s64" />
+    <column name="point" type="s64" />
+  </table>
+  
+  <table name="orbit">
+    <column name="number" type="s64" key="true" />
+    <column name="id" type="s64" />
+  </table>
+  
+  <table name="role">
+    <column name="role_id" type ="s64" key="true" />
+  </table>
+
+  <table name="buff">
+    <column name="id" type ="s64" key="true" />
+  </table>
+
+  <table name="effect">
+    <column name="id" type="s64" key="true" />
+  </table>
+  
+</root>

@@ -77,13 +77,13 @@ template<> ::oValue* Arena::CreateMaybeMessage<::oValue>(Arena*);
 enum eUnit {
   player = 0,
   hercules = 1,
-  buff = 2,
+  buffer = 2,
   eUnit_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   eUnit_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 bool eUnit_IsValid(int value);
 const eUnit eUnit_MIN = player;
-const eUnit eUnit_MAX = buff;
+const eUnit eUnit_MAX = buffer;
 const int eUnit_ARRAYSIZE = eUnit_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* eUnit_descriptor();

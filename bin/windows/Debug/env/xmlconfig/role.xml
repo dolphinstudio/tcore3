@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<root>
+    <role id="101.000000" name="虎力大仙" res="1101.000000" icon_res="2101.000000" piece_id="101.000000" piece_number="10.000000" skill="101.000000" base_weight="10.000000" up_weight="2.000000" strength="10.000000" size="50.000000" appear_sound="effect_a1.mp3" dsc="不要误会了，我不是《西游记》里的虎力大仙。跟我比，他就是个渣渣~" />
+    <role id="102.000000" name="野猪骑士" res="1102.000000" icon_res="2102.000000" piece_id="102.000000" piece_number="15.000000" skill="102.000000" base_weight="10.000000" up_weight="2.000000" strength="10.000000" size="50.000000" appear_sound="effect_a2.mp3" dsc="哼哼哼~冲起来冲起来，让你们尝尝老猪的厉害！" />
+    <role id="103.000000" name="二哈勇士" res="1103.000000" icon_res="2103.000000" piece_id="103.000000" piece_number="10.000000" skill="103.000000" base_weight="10.000000" up_weight="2.000000" strength="10.000000" size="50.000000" appear_sound="effect_a3.mp3" dsc="这些个猪啊熊啊啥的，个头大了不起吗？我二哈这辈子怕过谁？！" />
+    <role id="104.000000" name="雪地野人" res="1104.000000" icon_res="2104.000000" piece_id="104.000000" piece_number="20.000000" skill="104.000000" base_weight="10.000000" up_weight="2.000000" strength="10.000000" size="50.000000" appear_sound="effect_a4.mp3" dsc="吼~吼~扔个大冰块把你们都冻起来！吼吼~" />
+</root>

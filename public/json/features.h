@@ -26,7 +26,7 @@ namespace Json {
        */
       static Features strictMode();
 
-      /** \brief Initialize the configuration like JsonConfig::allFeatures;
+      /** \brief initialize the configuration like JsonConfig::allFeatures;
        */
       Features();
 

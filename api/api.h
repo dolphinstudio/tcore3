@@ -214,6 +214,7 @@ namespace tcore {
             virtual bool launchTcpSession(iTcpSession * client, const char * ip, const int port, int max_ss, int max_rs) = 0;
             virtual bool launchTcpServer(iTcpServer * server, const char * ip, const int port, int max_ss,  int max_rs) = 0;
 
+            virtual iHttpRequest * getHttpRequest(const s64 account, const s64 id, const char * url, iHttpResponse * response, const iContext & context) = 0;
 
 #       define forever -1
 #       define start_timer(core, timer, id, delay, count, interval, context) core->startTimer(timer, id, delay, count, interval, (s64)context, __FILE__, __LINE__);

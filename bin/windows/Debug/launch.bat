@@ -1,7 +1,7 @@
 cd %~dp0
 echo off;
 echo "kill old proc..."
-taskkill /im tcore.exe
+taskkill /im tcore3.exe
 pause
 echo "launche string...."
 

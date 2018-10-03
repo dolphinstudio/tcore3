@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<root>
+    <level level="1.000000" total_exp="0.000000" exp="25.000000" />
+    <level level="2.000000" total_exp="25.000000" exp="50.000000" />
+    <level level="3.000000" total_exp="75.000000" exp="100.000000" />
+    <level level="4.000000" total_exp="175.000000" exp="150.000000" />
+    <level level="5.000000" total_exp="325.000000" exp="200.000000" />
+    <level level="6.000000" total_exp="525.000000" exp="250.000000" />
+    <level level="7.000000" total_exp="775.000000" exp="300.000000" />
+    <level level="8.000000" total_exp="1075.000000" exp="400.000000" />
+    <level level="9.000000" total_exp="1475.000000" exp="500.000000" />
+    <level level="10.000000" total_exp="1975.000000" exp="600.000000" />
+    <level level="11.000000" total_exp="2575.000000" exp="700.000000" />
+    <level level="12.000000" total_exp="3275.000000" exp="800.000000" />
+    <level level="13.000000" total_exp="4075.000000" exp="1000.000000" />
+    <level level="14.000000" total_exp="5075.000000" exp="1200.000000" />
+    <level level="15.000000" total_exp="6275.000000" exp="1400.000000" />
+    <level level="16.000000" total_exp="7675.000000" exp="1600.000000" />
+    <level level="17.000000" total_exp="9275.000000" exp="1800.000000" />
+    <level level="18.000000" total_exp="11075.000000" exp="2000.000000" />
+    <level level="19.000000" total_exp="13075.000000" exp="2500.000000" />
+    <level level="20.000000" total_exp="15575.000000" exp="3000.000000" />
+    <level level="21.000000" total_exp="18575.000000" exp="3500.000000" />
+    <level level="22.000000" total_exp="22075.000000" exp="4000.000000" />
+    <level level="23.000000" total_exp="26075.000000" exp="4500.000000" />
+    <level level="24.000000" total_exp="30575.000000" exp="5000.000000" />
+    <level level="25.000000" total_exp="35575.000000" exp="5500.000000" />
+    <level level="26.000000" total_exp="41075.000000" exp="6000.000000" />
+    <level level="27.000000" total_exp="47075.000000" exp="7000.000000" />
+    <level level="28.000000" total_exp="54075.000000" exp="8000.000000" />
+    <level level="29.000000" total_exp="62075.000000" exp="9000.000000" />
+    <level level="30.000000" total_exp="71075.000000" exp="10000.000000" />
+    <level level="31.000000" total_exp="81075.000000" exp="990000.000000" />
+</root>

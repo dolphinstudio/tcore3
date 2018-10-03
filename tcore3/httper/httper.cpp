@@ -25,7 +25,7 @@ namespace tcore {
                 || nullptr == (root = config.RootElement())
                 || nullptr == (http = root->FirstChildElement("http"))) {
                 tassert(false, "wtf");
-                //ErrorLog(Core::getInstance(), "load %s error", path.GetString());
+                //error(Core::getInstance(), "load %s error", path.GetString());
                 return nullptr;
             }
 

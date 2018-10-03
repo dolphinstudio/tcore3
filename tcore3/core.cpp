@@ -20,7 +20,7 @@ namespace tcore {
     }
 
     const char * core::getEnv() {
-        return nullptr;
+        return _env.c_str();
     }
 
     void core::parseArgs(int argc, const char ** argv) {
@@ -85,7 +85,7 @@ namespace tcore {
         tassert(env && env->Attribute("path"), "wtf");
         _env = env->Attribute("path");
 
-        return false;
+        return true;
     }
 
     bool core::launchUdpSession(iUdpSession * session, const char * ip, const s32 port) {
@@ -98,6 +98,10 @@ namespace tcore {
 
     bool core::launchTcpServer(iTcpServer * server, const char * ip, const int port, const int max_ss, const int max_rs) {
         return getNetInstance()->launchTcpServer(server, ip, port, max_ss, max_rs);
+    }
+
+    iHttpRequest * core::getHttpRequest(const s64 account, const s64 id, const char * url, iHttpResponse * response, const iContext & context) {
+        return httper::getInstance()->getHttpRequest(account, id, url, response, context);
     }
 
     void core::startTimer(iTimer * timer, const s32 id, s64 delay, s32 count, s64 interval, const iContext context, const char * file, const s32 line){

@@ -26,6 +26,7 @@ namespace tcore {
         virtual bool launchTcpSession(iTcpSession * session, const char * ip, const int port, int max_ss, int max_rs);
         virtual bool launchTcpServer(iTcpServer * server, const char * ip, const int port, int max_ss, int max_rs);
 
+        virtual iHttpRequest * getHttpRequest(const s64 account, const s64 id, const char * url, iHttpResponse * response, const iContext & context);
 
         virtual void startTimer(iTimer * timer, const s32 id, s64 delay, s32 count, s64 interval, const iContext context, const char * file, const s32 line);
         virtual void killTimer(iTimer * timer, const s32 id, const iContext context = (s64)0);

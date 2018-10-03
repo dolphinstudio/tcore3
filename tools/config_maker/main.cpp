@@ -127,13 +127,13 @@ bool readExcel(const std::string & path, const std::string & struct_name, std::s
         value << "        o_config_" << struct_name << " o" << struct_name <<";\n";
         for (s32 i = 0; i < column_names.size(); i++) {
             if (column_types[i] == "int") {
-                value << "        o" << struct_name << "._" << column_names[i] << " = tools::StringAsInt(" << struct_name << "->Attribute(\"" << column_names[i] << "\"));\n";
+                value << "        o" << struct_name << "._" << column_names[i] << " = tools::stringAsInt(" << struct_name << "->Attribute(\"" << column_names[i] << "\"));\n";
             }
             else if (column_types[i] == "string") {
                 value << "        o" << struct_name << "._" << column_names[i] << " = " << struct_name << "->Attribute(\"" << column_names[i] << "\");\n";
             }
             else if (column_types[i] == "float") {
-                value << "        o" << struct_name << "._" << column_names[i] << " = tools::StringAsFloat(" << struct_name << "->Attribute(\"" << column_names[i] << "\"));\n";
+                value << "        o" << struct_name << "._" << column_names[i] << " = tools::stringAsFloat(" << struct_name << "->Attribute(\"" << column_names[i] << "\"));\n";
             }
             else if (column_types[i].substr(0, 3) == "map") {
                 value << "        {\n";
@@ -151,9 +151,9 @@ bool readExcel(const std::string & path, const std::string & struct_name, std::s
                 value << "                tools::Split(arrays[i], \":\", key_value);\n";
 
                 if (keytype == "int") {
-                    value << "                " << keytype << " key = tools::StringAsInt(key_value[0].c_str());\n";
+                    value << "                " << keytype << " key = tools::stringAsInt(key_value[0].c_str());\n";
                 } else if (keytype == "float") {
-                    value << "                " << keytype << " key = tools::StringAsFloat(key_value[0].c_str());\n";
+                    value << "                " << keytype << " key = tools::stringAsFloat(key_value[0].c_str());\n";
                 } else if (keytype == "string") {
                     value << "                " << keytype << " key = key_value[0];\n";
                 }
@@ -165,9 +165,9 @@ bool readExcel(const std::string & path, const std::string & struct_name, std::s
                 value << "                " << valuename << " o" << valuename << ";\n";
                 for (s32 index = 0; index < info._mbinfo.size(); index++) {
                     if (info._mbinfo[index]._type == "int") {
-                        value << "                o" << valuename << "._" << info._mbinfo[index]._name << " = tools::StringAsInt(values[" << index << "].c_str());\n";
+                        value << "                o" << valuename << "._" << info._mbinfo[index]._name << " = tools::stringAsInt(values[" << index << "].c_str());\n";
                     } else if (info._mbinfo[index]._type == "float") {
-                        value << "                o" << valuename << "._" << info._mbinfo[index]._name << " = tools::StringAsFloat(values[" << index << "].c_str());\n";
+                        value << "                o" << valuename << "._" << info._mbinfo[index]._name << " = tools::stringAsFloat(values[" << index << "].c_str());\n";
                     } else if (info._mbinfo[index]._type == "string") {
                         value << "                o" << valuename << "._" << info._mbinfo[index]._name << " = values[" << index << "];\n";
                     }
@@ -188,9 +188,9 @@ bool readExcel(const std::string & path, const std::string & struct_name, std::s
                 const s32 count = struct_info_map[structname]._mbinfo.size();
                 value << "            for (s32 i = 0; i < arrays.size(); i++) {\n";
                 if (column_struct[i] == "int") {
-                    value << "                int value = tools::StringAsInt(arrays[i].c_str());\n";
+                    value << "                int value = tools::stringAsInt(arrays[i].c_str());\n";
                 } else if (column_struct[i] == "float") {
-                    value << "                float value = tools::StringAsFloat(arrays[i].c_str());\n";
+                    value << "                float value = tools::stringAsFloat(arrays[i].c_str());\n";
                 } else if (column_struct[i] == "string") {
                     value << "                std::string value = arrays[i].c_str();\n";
                 }
@@ -200,10 +200,10 @@ bool readExcel(const std::string & path, const std::string & struct_name, std::s
                     value << "                " << column_struct[i] << " value;\n";
                     for (s32 j = 0; j < count; j++) {
                         if (struct_info_map[structname]._mbinfo[j]._type == "int") {
-                            value << "                value._" << struct_info_map[structname]._mbinfo[j]._name << " = tools::StringAsInt(values[" << j << "].c_str());\n";
+                            value << "                value._" << struct_info_map[structname]._mbinfo[j]._name << " = tools::stringAsInt(values[" << j << "].c_str());\n";
                         }
                         else if (struct_info_map[structname]._mbinfo[j]._type == "float") {
-                            value << "                value._" << struct_info_map[structname]._mbinfo[j]._name << " = tools::StringAsFloat(values[" << j << "].c_str());\n";
+                            value << "                value._" << struct_info_map[structname]._mbinfo[j]._name << " = tools::stringAsFloat(values[" << j << "].c_str());\n";
                         }
                         else if (struct_info_map[structname]._mbinfo[j]._type == "string") {
                             value << "                value._" << struct_info_map[structname]._mbinfo[j]._name << " = values[" << j << "].c_str();\n";
@@ -301,13 +301,13 @@ bool readGlobalExcel(const std::string & path, const std::string & struct_name, 
         value << "    if (global) {\n";
         for (s32 i = 0; i < column_names.size(); i++) {
             if (column_types[i] == "int") {
-                value << "        g_global_config._" << column_names[i] << " = tools::StringAsInt(" << struct_name << "->Attribute(\"" << column_names[i] << "\"));\n";
+                value << "        g_global_config._" << column_names[i] << " = tools::stringAsInt(" << struct_name << "->Attribute(\"" << column_names[i] << "\"));\n";
             }
             else if (column_types[i] == "string") {
                 value << "        g_global_config._" << column_names[i] << " = " << struct_name << "->Attribute(\"" << column_names[i] << "\");\n";
             }
             else if (column_types[i] == "float") {
-                value << "        g_global_config._" << column_names[i] << " = tools::StringAsFloat(" << struct_name << "->Attribute(\"" << column_names[i] << "\"));\n";
+                value << "        g_global_config._" << column_names[i] << " = tools::stringAsFloat(" << struct_name << "->Attribute(\"" << column_names[i] << "\"));\n";
             }
         }
 
@@ -343,7 +343,7 @@ int main() {
     content << "#ifndef __auto_config_h__ \n";
     content << "#define __auto_config_h__ \n";
     content << "// tools from sisyphus \n";
-    content << "#include <map>\n" << "#include <string>\n\n" << "#include \"Tools.h\"\n"<< "#include \"tinyxml/tinyxml.h\"\n\n" << "using namespace tools;\nusing namespace std;\n\n";
+    content << "#include <map>\n" << "#include <string>\n\n" << "#include \"tools.h\"\n"<< "#include \"tinyxml/tinyxml.h\"\n\n" << "using namespace tools;\nusing namespace std;\n\n";
 
     macro_extern << "#define config_init_macro ";
     function << "inline void initconfig(const std::string & path) {\n";

@@ -3,7 +3,7 @@
 
 static const char * filehead = "#ifndef __attribute_h__\n\
 #define __attribute_h__\n\
-#include \"MultiSys.h\"\n\
+#include \"multisys.h\"\n\
 #pragma pack(push, 1)\n\
 namespace dc {\n\
     enum {\n\

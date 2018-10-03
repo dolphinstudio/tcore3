@@ -1,6 +1,6 @@
 #include "webSocketSession.h"
 
-#define MAGIC_KEY "258EAFA5-E914-47DA-95CA-C5AB0DC85B11"
+#define magic_key "258EAFA5-E914-47DA-95CA-C5AB0DC85B11"
 
 bool webSocketSession::tryShake(const void * data, const s32 size) {
     std::istringstream s((char *)data);
@@ -19,8 +19,7 @@ bool webSocketSession::tryShake(const void * data, const s32 size) {
     while (std::getline(s, header) && header != "\r") {
         if (header[header.size() - 1] != '\r') {
             return false;
-        }
-        else {
+        } else {
             header.erase(header.end() - 1);    //remove last char
         }
 
@@ -34,9 +33,9 @@ bool webSocketSession::tryShake(const void * data, const s32 size) {
 
     string response = "HTTP/1.1 101 Switching Protocols\r\n";
     response += "Connection: upgrade\r\n";
-    response += "Sec-webSocket-Accept: ";
-    std::string server_key = _header_map["Sec-webSocket-Key"];
-    server_key += MAGIC_KEY;
+    response += "Sec-WebSocket-Accept: ";
+    std::string server_key = _header_map["Sec-WebSocket-Key"];
+    server_key += magic_key;
 
     tlib::sha1 sha;
     unsigned int message_digest[5];
@@ -51,6 +50,8 @@ bool webSocketSession::tryShake(const void * data, const s32 size) {
     server_key += "\r\n";
     response += server_key.c_str();
     response += "Upgrade: websocket\r\n\r\n";
+
+    //TraceLog(g_core, "%s", response.c_str());
 
     send(response.c_str(), response.size());
     return true;

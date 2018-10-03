@@ -94,10 +94,10 @@ protected:
     virtual void registerClientProto(s16 msgid, iProtoer<iNoderSession> & protoer) = 0;
 };
 
-#define register_node_ev(node, id, fun) node->RegisterEvent(id, fun, #fun)
-#define register_noder_c_proto(node, id, fun) node->RegisterClientProto(id, fun, #fun);
+#define register_node_ev(node, id, fun) node->registerEvent(id, fun, #fun)
+#define register_noder_c_proto(node, id, fun) node->registerClientProto(id, fun, #fun);
 
-#define set_noder_all_c_proto_callback(node, fun) node->SetAllClientProtoCallback(fun, #fun)
+#define set_noder_all_c_proto_callback(node, fun) node->setAllClientProtoCallback(fun, #fun)
 
 #define relay_server_msg_to_client(node, account, id, body, nsid, nsname) { \
     oRelayServerMessageToClient relay; \
@@ -107,7 +107,7 @@ protected:
     char * temp = (char *)alloca(body.ByteSize()); \
     if (body.SerializeToArray(temp, body.ByteSize())) { \
         relay.set_body(temp, body.ByteSize()); \
-        node->SendProtoToNoder(nsid, nsname, eNProtoID::RelayServerMessageToClient, relay); \
+        node->sendProtoToNoder(nsid, nsname, eNProtoID::RelayServerMessageToClient, relay); \
     }\
 }
 

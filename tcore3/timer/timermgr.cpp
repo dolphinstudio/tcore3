@@ -63,7 +63,7 @@ namespace tcore {
         while (!_running->empty()) {
             tbase * base = _running->popFront();
             if (!base) {
-                //ErrorLog(core::getInstance(), "where is timer base, _running %x", _running);
+                //error(core::getInstance(), "where is timer base, _running %x", _running);
             }
 
             base->onTimer();
@@ -100,13 +100,13 @@ namespace tcore {
         if (itor != s_timer_map.end()) {
             TIMEBASE_MAP::iterator ifind = itor->second.find(ct);
             if (ifind != itor->second.end() && ifind->second == base) {
-                //DebugLog(core::getInstance(), "remove base %x, timer %x, id %d, context %lld | %llx", ifind->second, timer, id, context._context_mark, context._context_point);
+                //debug(core::getInstance(), "remove base %x, timer %x, id %d, context %lld | %llx", ifind->second, timer, id, context._context_mark, context._context_point);
                 itor->second.erase(ifind);
                 return;
             }
         }
 
-        ////ErrorLog(core::getInstance(), "cant find timer base, timer %x, id %d context %lld | %llx", timer, id, context._context_mark, context._context_point);
+        ////error(core::getInstance(), "cant find timer base, timer %x, id %d context %lld | %llx", timer, id, context._context_mark, context._context_point);
     }
 
     tbase * timermgr::findTimerBase(iTimer * timer, const s32 id, const iContext & context) {
@@ -126,7 +126,7 @@ namespace tcore {
     void timermgr::startTimer(iTimer * timer, const s32 id, const iContext & context, s64 delay, s32 count, s64 interval, const char * file, const s32 line) {
         tbase * base = findTimerBase(timer, id, context);
         if (base) {
-            ////ErrorLog(core::getInstance(), "already has timer base %x %s:%d, remover it", base, base->_file.GetString(), base->_line);
+            ////error(core::getInstance(), "already has timer base %x %s:%d, remover it", base, base->_file.GetString(), base->_line);
             return;
         }
         tassert(interval > 0 && delay >= 0, "wtf");
@@ -152,7 +152,7 @@ namespace tcore {
         base->forceEnd();
         if (!base->isPolling()) {
             if (!base->getList()) {
-                ////ErrorLog(core::getInstance(), "base is not in a timer list, base %x, timer %x, id %d", base, timer, id);
+                ////error(core::getInstance(), "base is not in a timer list, base %x, timer %x, id %d", base, timer, id);
             }
 
             base->getList()->remove(base);
@@ -165,7 +165,7 @@ namespace tcore {
     void timermgr::pauseTimer(iTimer * timer, const s32 id, const iContext & context) {
         tbase * base = findTimerBase(timer, id, context);
         if (base == nullptr) {
-            ////ErrorLog(core::getInstance(), "where is timer base, timer %x, id %d", timer, id);
+            ////error(core::getInstance(), "where is timer base, timer %x, id %d", timer, id);
             return;
         }
 
@@ -175,7 +175,7 @@ namespace tcore {
         base->pause(_jiffies);
         if (base->isValid() && !base->isPolling()) {
             if (!base->getList()) {
-                //ErrorLog(core::getInstance(), "base is not in a pause timer list, timer %x, id %d", timer, id);
+                //error(core::getInstance(), "base is not in a pause timer list, timer %x, id %d", timer, id);
             }
 
             base->getList()->remove(base);
@@ -186,12 +186,12 @@ namespace tcore {
     void timermgr::resumeTimer(iTimer * timer, const s32 id, const iContext & context) {
         tbase * base = findTimerBase(timer, id, context);
         if (base == nullptr) {
-            //ErrorLog(core::getInstance(), "where is timer base, timer %x, id %d", timer, id);
+            //error(core::getInstance(), "where is timer base, timer %x, id %d", timer, id);
             return;
         }
 
         if (base->getList() != _suspended) {
-            //ErrorLog(core::getInstance(), "base %x is not in supended list, timer %x, id %d", base, timer, id);
+            //error(core::getInstance(), "base %x is not in supended list, timer %x, id %d", base, timer, id);
         }
 
         if (!base->isValid())

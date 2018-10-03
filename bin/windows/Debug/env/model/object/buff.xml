@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <attribute name="scene" type="s64" visual="false" share="false" save="false" important="false" />
+  <attribute name="configid" type="s64" visual="false" share="false" save="false" important="false" />
+  <attribute name="type" type="s64" visual="false" share="false" save="false" important="false" />
+  <attribute name="attr_type" type="s64" visual="true" share="true" save="false" important="false" />
+  <attribute name="delay" type="s64" visual="true" share="true" save="false" important="false" />
+  <attribute name="interval" type="s64" visual="true" share="true" save="false" important="false" />
+  <attribute name="count" type="s64" visual="false" share="false" save="false" important="false" />
+  <attribute name="value" type="float" visual="true" share="true" save="false" important="false" />
+
+  <table name="target">
+    <column name="id" type="s64" key="true" />
+    <column name="value" type="float" />
+  </table>
+</root>

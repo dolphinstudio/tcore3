@@ -221,12 +221,12 @@ static void AddDescriptorsImpl() {
       "\005oUnit\022\026\n\002id\030\001 \001(\0132\n.oIdentity\022\"\n\006attres"
       "\030\002 \003(\0132\022.oUnit.AttresEntry\032:\n\013AttresEntr"
       "y\022\013\n\003key\030\001 \001(\t\022\032\n\005value\030\002 \001(\0132\013.oAttribu"
-      "te:\0028\001*+\n\005eUnit\022\n\n\006player\020\000\022\014\n\010hercules\020"
-      "\001\022\010\n\004buff\020\002*-\n\005eType\022\t\n\005__int\020\000\022\013\n\007__flo"
-      "at\020\001\022\014\n\010__string\020\002b\006proto3"
+      "te:\0028\001*-\n\005eUnit\022\n\n\006player\020\000\022\014\n\010hercules\020"
+      "\001\022\n\n\006buffer\020\002*-\n\005eType\022\t\n\005__int\020\000\022\013\n\007__f"
+      "loat\020\001\022\014\n\010__string\020\002b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 426);
+      descriptor, 428);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "data.proto", &protobuf_RegisterTypes);
 }

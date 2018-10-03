@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<root>
+    <advertise id="1.000000" type="0.000000" param="" number="18.000000" />
+    <advertise id="2.000000" type="0.000000" param="" number="20.000000" />
+    <advertise id="3.000000" type="0.000000" param="" number="22.000000" />
+    <advertise id="201.000000" type="1.000000" param="102.000000" number="1.000000" />
+    <advertise id="202.000000" type="1.000000" param="103.000000" number="1.000000" />
+    <advertise id="203.000000" type="1.000000" param="104.000000" number="1.000000" />
+    <advertise id="301.000000" type="2.000000" param="101.000000" number="1.000000" />
+</root>

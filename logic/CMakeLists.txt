@@ -16,15 +16,33 @@ set(interface
 	${interface}
     "${PROJECT_SOURCE_DIR}/logic/interface/attribute.h"
     "${PROJECT_SOURCE_DIR}/logic/interface/auto_config.h"
-    "${PROJECT_SOURCE_DIR}/logic/interface/iIdmanager.h"
-    "${PROJECT_SOURCE_DIR}/logic/interface/iEvent.h"
-    "${PROJECT_SOURCE_DIR}/logic/interface/iModel.h"
-    "${PROJECT_SOURCE_DIR}/logic/interface/iMaster.h"
-    "${PROJECT_SOURCE_DIR}/logic/interface/iNoder.h"
-    "${PROJECT_SOURCE_DIR}/logic/interface/iSession.h"
-    "${PROJECT_SOURCE_DIR}/logic/interface/iWebSocket.h"
-    "${PROJECT_SOURCE_DIR}/logic/interface/iRedis.h"
+    "${PROJECT_SOURCE_DIR}/logic/interface/iAi.h"
+    "${PROJECT_SOURCE_DIR}/logic/interface/iBuff.h"
+    "${PROJECT_SOURCE_DIR}/logic/interface/iCards.h"
+    "${PROJECT_SOURCE_DIR}/logic/interface/iCombiner.h"
     "${PROJECT_SOURCE_DIR}/logic/interface/iConfiger.h"
+    "${PROJECT_SOURCE_DIR}/logic/interface/iEffect.h"
+    "${PROJECT_SOURCE_DIR}/logic/interface/iEvent.h"
+    "${PROJECT_SOURCE_DIR}/logic/interface/iGame.h"
+    "${PROJECT_SOURCE_DIR}/logic/interface/IGate.h"
+    "${PROJECT_SOURCE_DIR}/logic/interface/iIdmanager.h"
+    "${PROJECT_SOURCE_DIR}/logic/interface/iLogicer.h"
+    "${PROJECT_SOURCE_DIR}/logic/interface/iMaster.h"
+    "${PROJECT_SOURCE_DIR}/logic/interface/iMatch.h"
+    "${PROJECT_SOURCE_DIR}/logic/interface/iModel.h"
+    "${PROJECT_SOURCE_DIR}/logic/interface/iNoder.h"
+    "${PROJECT_SOURCE_DIR}/logic/interface/iOrbit.h"
+    "${PROJECT_SOURCE_DIR}/logic/interface/iPublic.h"
+    "${PROJECT_SOURCE_DIR}/logic/interface/iRedis.h"
+    "${PROJECT_SOURCE_DIR}/logic/interface/iReference.h"
+    "${PROJECT_SOURCE_DIR}/logic/interface/iRobit.h"
+    "${PROJECT_SOURCE_DIR}/logic/interface/iRole.h"
+    "${PROJECT_SOURCE_DIR}/logic/interface/iScene.h"
+    "${PROJECT_SOURCE_DIR}/logic/interface/iScore.h"
+    "${PROJECT_SOURCE_DIR}/logic/interface/iSession.h"
+    "${PROJECT_SOURCE_DIR}/logic/interface/iSkill.h"
+    "${PROJECT_SOURCE_DIR}/logic/interface/iStorage.h"
+    "${PROJECT_SOURCE_DIR}/logic/interface/iWebSocket.h"
 )
 
 set(nodeproto
@@ -81,3 +99,18 @@ ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/kcper)
 ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/websocket)
 ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/redis)
 ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/configer)
+ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/ai)
+ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/buff)
+ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/cards)
+ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/effect)
+ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/game)
+ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/gate)
+ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/logicer)
+ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/match)
+
+ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/relation)
+ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/scene)
+ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/skill)
+ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/storage)
+
+

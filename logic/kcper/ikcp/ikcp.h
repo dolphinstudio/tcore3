@@ -9,8 +9,8 @@
 // + Lightweight, distributed as a single source file.
 //
 //=====================================================================
-#ifndef __IKCP_H__
-#define __IKCP_H__
+#ifndef __ikcp_h__
+#define __ikcp_h__
 
 #include <stddef.h>
 #include <stdlib.h>
@@ -20,8 +20,8 @@
 //=====================================================================
 // 32BIT INTEGER DEFINITION 
 //=====================================================================
-#ifndef __INTEGER_32_BITS__
-#define __INTEGER_32_BITS__
+#ifndef __iNTEGER_32_BITS__
+#define __iNTEGER_32_BITS__
 #if defined(_WIN64) || defined(WIN64) || defined(__amd64__) || \
 	defined(__x86_64) || defined(__x86_64__) || defined(_M_IA64) || \
 	defined(_M_AMD64)
@@ -59,38 +59,38 @@
 //=====================================================================
 // Integer Definition
 //=====================================================================
-#ifndef __IINT8_DEFINED
-#define __IINT8_DEFINED
+#ifndef __iINT8_DEFINED
+#define __iINT8_DEFINED
 typedef char IINT8;
 #endif
 
-#ifndef __IUINT8_DEFINED
-#define __IUINT8_DEFINED
+#ifndef __iUINT8_DEFINED
+#define __iUINT8_DEFINED
 typedef unsigned char IUINT8;
 #endif
 
-#ifndef __IUINT16_DEFINED
-#define __IUINT16_DEFINED
+#ifndef __iUINT16_DEFINED
+#define __iUINT16_DEFINED
 typedef unsigned short IUINT16;
 #endif
 
-#ifndef __IINT16_DEFINED
-#define __IINT16_DEFINED
+#ifndef __iINT16_DEFINED
+#define __iINT16_DEFINED
 typedef short IINT16;
 #endif
 
-#ifndef __IINT32_DEFINED
-#define __IINT32_DEFINED
+#ifndef __iINT32_DEFINED
+#define __iINT32_DEFINED
 typedef ISTDINT32 IINT32;
 #endif
 
-#ifndef __IUINT32_DEFINED
-#define __IUINT32_DEFINED
+#ifndef __iUINT32_DEFINED
+#define __iUINT32_DEFINED
 typedef ISTDUINT32 IUINT32;
 #endif
 
-#ifndef __IINT64_DEFINED
-#define __IINT64_DEFINED
+#ifndef __iINT64_DEFINED
+#define __iINT64_DEFINED
 #if defined(_MSC_VER) || defined(__BORLANDC__)
 typedef __int64 IINT64;
 #else
@@ -98,8 +98,8 @@ typedef long long IINT64;
 #endif
 #endif
 
-#ifndef __IUINT64_DEFINED
-#define __IUINT64_DEFINED
+#ifndef __iUINT64_DEFINED
+#define __iUINT64_DEFINED
 #if defined(_MSC_VER) || defined(__BORLANDC__)
 typedef unsigned __int64 IUINT64;
 #else
@@ -131,8 +131,8 @@ typedef unsigned long long IUINT64;
 //=====================================================================
 // QUEUE DEFINITION                                                  
 //=====================================================================
-#ifndef __IQUEUE_DEF__
-#define __IQUEUE_DEF__
+#ifndef __iQUEUE_DEF__
+#define __iQUEUE_DEF__
 
 struct IQUEUEHEAD {
 	struct IQUEUEHEAD *next, *prev;

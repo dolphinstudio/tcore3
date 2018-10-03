@@ -1,5 +1,5 @@
-#ifndef __IEvent_h__
-#define __IEvent_h__
+#ifndef __iEvent_h__
+#define __iEvent_h__
 
 #include "api.h"
 
@@ -92,4 +92,4 @@ protected:
 
 #define register_event(ev, id, fun) ev->register_ev(id, fun, #fun);
 
-#endif //__IEvent_h__
+#endif //__iEvent_h__

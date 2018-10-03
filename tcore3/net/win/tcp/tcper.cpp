@@ -69,8 +69,7 @@ namespace tcore {
             DWORD bytes = 0;
             s32 res = connectex(pipe->_socket, (struct sockaddr *)&ex->_remote, sizeof(struct sockaddr_in), nullptr, 0, &bytes, (LPOVERLAPPED)ex);
             s32 err = GetLastError();
-            if (SOCKET_ERROR == res && err != WSA_IO_PENDING
-                && SOCKET_ERROR != setsockopt(pipe->_socket, SOL_SOCKET, SO_UPDATE_CONNECT_CONTEXT, nullptr, 0)) {
+            if (SOCKET_ERROR == res && err != WSA_IO_PENDING) {
                 recover_to_pool(g_overlappedex_pool, ex);
                 recover_to_pool(static_tcper_pool, pipe);
                 return nullptr;
@@ -92,7 +91,9 @@ namespace tcore {
         case eCompletion::connected: {
             recover_to_pool(g_overlappedex_pool, ex);
             DWORD ul = 1;
-            if (ERROR_SUCCESS == code && SOCKET_ERROR != setsockopt(_socket, IPPROTO_TCP, TCP_NODELAY, (const char*)&ul, sizeof(ul))) {
+            if (ERROR_SUCCESS == code
+                && SOCKET_ERROR != setsockopt(_socket, SOL_SOCKET, SO_UPDATE_CONNECT_CONTEXT, nullptr, 0)
+                && SOCKET_ERROR != setsockopt(_socket, IPPROTO_TCP, TCP_NODELAY, (const char*)&ul, sizeof(ul))) {
                 if (async_recv()) {
                     api::iTcpPipe * pipe = this;
                     tools::memery::safeMemcpy((void *)&_session->_pipe, sizeof(_session->_pipe), &pipe, sizeof(pipe));

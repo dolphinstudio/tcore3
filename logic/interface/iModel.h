@@ -5,8 +5,8 @@
  * Created on March 3, 2015, 10:46 AM
  */
 
-#ifndef __IModel_h__
-#define __IModel_h__
+#ifndef __iModel_h__
+#define __iModel_h__
 
 #include "api.h"
 #include "attribute.h"
@@ -246,4 +246,4 @@ protected:
 #define add_row_key_int(tab, key) tab->addRowKeyInt64(key, __FILE__, __LINE__)
 #define add_row_key_string(tab, key) tab->addRowKeyString(key, __FILE__, __LINE__)
 
-#endif //define __IModel_h__
+#endif //define __iModel_h__
