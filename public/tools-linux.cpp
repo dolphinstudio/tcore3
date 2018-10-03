@@ -47,6 +47,12 @@ namespace tools {
             return 0 == res;
         }
 
+        const char * get_filename_ext(const char * filename) {
+            const char *dot = strrchr(filename, '.');
+            if (!dot || dot == filename) return "";
+            return dot;
+        }
+		
         bool getfiles(const char * dicpath, const char * extension, OUT opaths & paths, OUT onames & names, OUT s32 & count) {
             DIR * dp;
             struct dirent* dirp;
