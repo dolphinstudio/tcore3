@@ -24,7 +24,7 @@ set(interface
     "${PROJECT_SOURCE_DIR}/logic/interface/iEffect.h"
     "${PROJECT_SOURCE_DIR}/logic/interface/iEvent.h"
     "${PROJECT_SOURCE_DIR}/logic/interface/iGame.h"
-    "${PROJECT_SOURCE_DIR}/logic/interface/IGate.h"
+    "${PROJECT_SOURCE_DIR}/logic/interface/iGate.h"
     "${PROJECT_SOURCE_DIR}/logic/interface/iIdmanager.h"
     "${PROJECT_SOURCE_DIR}/logic/interface/iLogicer.h"
     "${PROJECT_SOURCE_DIR}/logic/interface/iMaster.h"
