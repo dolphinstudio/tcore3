@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<root>
-    <task id="1.000000" type="0.000000" dsc="完成5局对抗" count="5.000000" reward="25.000000" />
-    <task id="2.000000" type="1.000000" dsc="获得1次胜利" count="3.000000" reward="25.000000" />
-    <task id="3.000000" type="2.000000" dsc="喂养1次大力士" count="1.000000" reward="25.000000" />
-    <task id="4.000000" type="3.000000" dsc="完成1次分享" count="1.000000" reward="25.000000" />
-    <task id="5.000000" type="4.000000" dsc="购买1次商品" count="1.000000" reward="25.000000" />
-</root>

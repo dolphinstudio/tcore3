@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<root>
-  <master host="127.0.0.1" port="6379" passwd="" />
-  <group section="0-1000">
-    <redis host="127.0.0.1" port="6379" passwd="" />
-  </group>
-</root>

@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<root>
-    <random_shop id="101.000000" type="0.000000" content_id="102.000000" number="5.000000" cost="200.000000" />
-    <random_shop id="102.000000" type="0.000000" content_id="103.000000" number="5.000000" cost="200.000000" />
-    <random_shop id="103.000000" type="0.000000" content_id="104.000000" number="5.000000" cost="200.000000" />
-    <random_shop id="104.000000" type="1.000000" content_id="101.000000" number="5.000000" cost="200.000000" />
-</root>

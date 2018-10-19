@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<root>
-    <global create_role_timer_interval="5.000000" move_speed="100.000000" public_cd="5000.000000" role_queue_size="3.000000" game_time="150.000000" init_role="101;102;103;104" max_role_fighting="4.000000" shop_refresh_cost_base="10.000000" shop_refresh_cost_up="10.000000" shop_refresh_cost_max="100.000000" shop_refresh_number="2.000000" shop_refresh_interval="120.000000" advertise_interval="300.000000" advertise_daily_count="50.000000" />
-</root>

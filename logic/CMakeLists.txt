@@ -13,48 +13,15 @@ set(common
 )
 
 set(interface
-	${interface}
-    "${PROJECT_SOURCE_DIR}/logic/interface/attribute.h"
-    "${PROJECT_SOURCE_DIR}/logic/interface/auto_config.h"
-    "${PROJECT_SOURCE_DIR}/logic/interface/iAi.h"
-    "${PROJECT_SOURCE_DIR}/logic/interface/iBuff.h"
-    "${PROJECT_SOURCE_DIR}/logic/interface/iCards.h"
-    "${PROJECT_SOURCE_DIR}/logic/interface/iCombiner.h"
-    "${PROJECT_SOURCE_DIR}/logic/interface/iConfiger.h"
-    "${PROJECT_SOURCE_DIR}/logic/interface/iEffect.h"
-    "${PROJECT_SOURCE_DIR}/logic/interface/iEvent.h"
-    "${PROJECT_SOURCE_DIR}/logic/interface/iGame.h"
-    "${PROJECT_SOURCE_DIR}/logic/interface/iGate.h"
-    "${PROJECT_SOURCE_DIR}/logic/interface/iIdmanager.h"
-    "${PROJECT_SOURCE_DIR}/logic/interface/iLogicer.h"
-    "${PROJECT_SOURCE_DIR}/logic/interface/iMaster.h"
-    "${PROJECT_SOURCE_DIR}/logic/interface/iMatch.h"
-    "${PROJECT_SOURCE_DIR}/logic/interface/iModel.h"
-    "${PROJECT_SOURCE_DIR}/logic/interface/iNoder.h"
-    "${PROJECT_SOURCE_DIR}/logic/interface/iOrbit.h"
-    "${PROJECT_SOURCE_DIR}/logic/interface/iPublic.h"
-    "${PROJECT_SOURCE_DIR}/logic/interface/iRedis.h"
-    "${PROJECT_SOURCE_DIR}/logic/interface/iReference.h"
-    "${PROJECT_SOURCE_DIR}/logic/interface/iRobit.h"
-    "${PROJECT_SOURCE_DIR}/logic/interface/iRole.h"
-    "${PROJECT_SOURCE_DIR}/logic/interface/iScene.h"
-    "${PROJECT_SOURCE_DIR}/logic/interface/iScore.h"
-    "${PROJECT_SOURCE_DIR}/logic/interface/iSession.h"
-    "${PROJECT_SOURCE_DIR}/logic/interface/iSkill.h"
-    "${PROJECT_SOURCE_DIR}/logic/interface/iStorage.h"
-    "${PROJECT_SOURCE_DIR}/logic/interface/iWebSocket.h"
+    ${interface}
 )
 
 set(nodeproto
-    "${PROJECT_SOURCE_DIR}/logic/proto/noder.pb.h"
-    "${PROJECT_SOURCE_DIR}/logic/proto/noder.pb.cc"
+
 )
 
 set(proto
-    "${PROJECT_SOURCE_DIR}/logic/proto/data.pb.h"
-    "${PROJECT_SOURCE_DIR}/logic/proto/data.pb.cc"
-    "${PROJECT_SOURCE_DIR}/logic/proto/game.pb.h"
-    "${PROJECT_SOURCE_DIR}/logic/proto/game.pb.cc"
+
 )
 
 IF(WIN32)
@@ -88,29 +55,6 @@ ELSEIF(UNIX)
     )
 ENDIF()
 
-ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/master)
-ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/noder)
-ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/idmanager)
-ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/event)
-ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/model)
-ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/tcptester)
-##ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/udptester)
-ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/kcper)
-ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/websocket)
-ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/redis)
-ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/configer)
-ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/ai)
-ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/buff)
-ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/cards)
-ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/effect)
-ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/game)
-ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/gate)
-ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/logicer)
-ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/match)
 
-ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/relation)
-ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/scene)
-ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/skill)
-ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/storage)
 
 

@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<root>
-    <buff id="102.000000" type="0.000000" attr_type="0.000000" delay="0.000000" period="7000.000000" interval="1000.000000" count="5.000000" value="0.100000" cancel="0.000000" des="" resource="3002.000000" />
-    <buff id="103.000000" type="0.000000" attr_type="0.000000" delay="0.000000" period="-1.000000" interval="1000.000000" count="1.000000" value="0.100000" cancel="0.000000" des="" resource="3002.000000" />
-    <buff id="104.000000" type="3.000000" attr_type="" delay="0.000000" period="5000.000000" interval="1000.000000" count="1.000000" value="" cancel="0.000000" des="" resource="3005.000000" />
-</root>

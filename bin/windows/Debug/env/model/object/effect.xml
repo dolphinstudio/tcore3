@@ -1,8 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<root parent="base">
-  <attribute name="configid" type="s64" visual="false" share="false" save="false" important="false" />
-  <attribute name="type" type="s64" visual="false" share="false" save="false" important="false" />
-  <attribute name="time" type="s64" visual="false" share="false" save="false" important="false" />
-  <attribute name="scene" type="s64" visual="false" share="false" save="false" important="false" />
-  <attribute name="orbit" type="s64" visual="false" share="false" save="false" important="false" />
-</root>

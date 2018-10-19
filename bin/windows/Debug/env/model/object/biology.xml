@@ -1,5 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<root parent="fsm">
-    <attribute name="y" type="float" visual="true" share="true" save="false" important="false" />
-    <attribute name="speed" type="s64" visual="true" share="true" save="false" important="false" />
-</root>

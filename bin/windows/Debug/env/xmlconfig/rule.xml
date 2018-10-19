@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<root>
-    <rule id="1.000000" begin="0.000000" end="50.000000" max_rand="3.000000" />
-    <rule id="2.000000" begin="50.000000" end="100.000000" max_rand="4.000000" />
-    <rule id="3.000000" begin="100.000000" end="150.000000" max_rand="5.000000" />
-</root>
