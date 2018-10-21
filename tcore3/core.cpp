@@ -53,23 +53,12 @@ namespace tcore {
     core * core::getInstance() {
         if (nullptr == static_core) {
             static_core = NEW core;
-            if (!static_core->launch()) {
-                DEL static_core;
-                static_core = nullptr;
-            } else {
-                getNetInstance();
-                timermgr::getInstance();
-                httper::getInstance();
-                logger::getInstance();
-                logic::getInstance();
-            }
         }
 
         return static_core;
     }
 
     bool core::launch() {
-
         std::string configpath;
         configpath.append(tools::file::getApppath()).append("/server_config/server_config.xml");
         printf("config path %s\n", configpath.c_str());
@@ -85,6 +74,11 @@ namespace tcore {
         tassert(env && env->Attribute("path"), "wtf");
         _env = env->Attribute("path");
 
+        getNetInstance();
+        httper::getInstance();
+        timermgr::getInstance();
+        logger::getInstance();
+        logic::getInstance();
         return true;
     }
 

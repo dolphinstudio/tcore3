@@ -5,7 +5,7 @@
 #include <string>
 
 #define invalid_port 0
-#define package_max_size 65507
+#define package_max_size 500
 
 class iModule;
 

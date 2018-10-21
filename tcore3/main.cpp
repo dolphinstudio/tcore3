@@ -1,6 +1,7 @@
 #include "tools.h"
 #include "logic/logic.h"
 #include "logger/logger.h"
+#include "httper/httper.h"
 #include <fstream>
 #include <stdlib.h>
 #ifdef WIN32
@@ -23,7 +24,8 @@ int main(int argc, const char ** args, const char ** env) {
     if (core::getInstance()->getArgs("pause")) {
         getchar();
     }
-    
+
+
     const char * name = core::getInstance()->getArgs("name");
     if (name) {
         core::getInstance()->setCorename(name);
@@ -31,8 +33,7 @@ int main(int argc, const char ** args, const char ** env) {
         core::getInstance()->setCorename("test");
     }
 
-    logic::getInstance()->launch();
-    logger::getInstance();
+    core::getInstance()->launch();
     while (1) {
         core::getInstance()->loop();
     }
