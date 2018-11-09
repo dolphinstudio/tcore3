@@ -1,35 +1,25 @@
 #cmake file for project core
 #author:T
 #created:2015-05-12 15:07:04
-
 include_directories(
     "${PROJECT_SOURCE_DIR}/logic/common"
     "${PROJECT_SOURCE_DIR}/logic/proto"
     "${PROJECT_SOURCE_DIR}/logic/interface"
-)
-
+)	
 set(common
-
 )
-
 set(interface
     ${interface}
 )
-
 set(nodeproto
-
 )
-
 set(proto
-
 )
-
 IF(WIN32)
     SET(libprotobuf
         debug "${PROJECT_SOURCE_DIR}/library/debug/libprotobuf.lib"
         optimized "${PROJECT_SOURCE_DIR}/library/release/libprotobuf.lib"
     )
-    
     SET(libredis  
         debug "${PROJECT_SOURCE_DIR}/library/debug/hiredis.lib"
         debug "${PROJECT_SOURCE_DIR}/library/debug/Win32_Interop.lib"
@@ -41,12 +31,10 @@ ELSEIF(UNIX)
         debug "/usr/local/lib64/libprotobuf.a"
         optimized "/usr/local/lib64/libprotobuf.a"
     )
-    
-    SET(libredis    
+    SET(libredis
         debug "${PROJECT_SOURCE_DIR}/library/libhiredis.a"
         optimized "${PROJECT_SOURCE_DIR}/library/libhiredis.a"
     )
-    
     SET(liblua
         debug "${PROJECT_SOURCE_DIR}/library/libluabind.a"
         debug "${PROJECT_SOURCE_DIR}/library/liblua.a"
@@ -54,4 +42,3 @@ ELSEIF(UNIX)
         optimized "${PROJECT_SOURCE_DIR}/library/liblua.a"
     )
 ENDIF()
-

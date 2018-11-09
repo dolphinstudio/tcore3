@@ -15,6 +15,55 @@ static char toCapital(const char & letter) {
 int main(int argc, const char ** args, const char ** env) {
     parse(argc, args);
 
+    if (getarg("del")) {
+        string module_name = getarg("del");
+        string interface_name;
+        if (module_name.size() > 0) {
+            interface_name = module_name;
+            *(char *)(interface_name.c_str()) = toCapital(interface_name.c_str()[0]);
+        }
+
+        string path = tools::file::getApppath();
+        string interface_file = path + "/interface/i" + interface_name + ".h";
+        printf("interface : %s\n", interface_file.c_str());
+
+        string module_dir = path + "/" + module_name;
+        printf("module_dir : %s\n", module_dir.c_str());
+
+        string module_header = module_dir + "/header.h";
+        string module_h = module_dir + "/" + module_name + ".h";
+        string module_cpp = module_dir + "/" + module_name + ".cpp";
+        string module_main = module_dir + "/main.cpp";
+        string module_cmake = module_dir + "/CMakeLists.txt";
+
+        tools::file::delfile(interface_file.c_str());
+        tools::file::delfile(module_header.c_str());
+        tools::file::delfile(module_h.c_str());
+        tools::file::delfile(module_cpp.c_str());
+        tools::file::delfile(module_main.c_str());
+        tools::file::delfile(module_cmake.c_str());
+
+        tools::file::deldir(module_dir.c_str());
+
+        string cmake_manager_file = path + "/CMakeLists.txt";
+        tlib::cfile cmake_manager;
+        cmake_manager.open(cmake_manager_file.c_str());
+        string data;
+        bool res = cmake_manager.readtostring(data);
+        cmake_manager.close();
+        string temp = "\n    \"${PROJECT_SOURCE_DIR}/logic/interface/i" + interface_name + ".h\"";
+        tools::stringReplase(data, temp, "");
+        string temp2;
+        temp2.append("\n").append("ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/").append(module_name).append(")");
+        tools::stringReplase(data, temp2, "");
+        tools::stringReplase(data, "\r", "");
+        cmake_manager.open(cmake_manager_file.c_str(), true);
+        cmake_manager << tlib::cdata((void *)data.c_str(), data.size());
+        cmake_manager.save();
+        cmake_manager.close();
+        return 0;
+    }
+
     string auther = getarg("auther");
     string datetime = tools::time::getCurrentTimeString();
 
@@ -34,6 +83,12 @@ int main(int argc, const char ** args, const char ** env) {
 
     string module_dir = path + "/" + module_name;
     printf("module_dir : %s\n", module_dir.c_str());
+
+    if (tools::file::exists(interface_file) || tools::file::exists(module_dir)) {
+        printf("module %s interface file or dir already exists, push any key quit", module_name.c_str());
+        getchar();
+        exit(1);
+    }
 
     string module_header = module_dir + "/header.h";
     printf("module_header : %s\n", module_header.c_str());
@@ -125,6 +180,19 @@ int main(int argc, const char ** args, const char ** env) {
     file_cmake << ccmake.c_str();
     file_cmake.save();
     file_cmake.close();
+
+    string cmake_manager_file = path + "/CMakeLists.txt";
+    tlib::cfile cmake_manager;
+    cmake_manager.open(cmake_manager_file.c_str());
+    string data;
+    bool res = cmake_manager.readtostring(data);
+    cmake_manager.close();
+    string temp = "${interface}\n    \"${PROJECT_SOURCE_DIR}/logic/interface/i" + interface_name + ".h\"";
+    tools::stringReplase(data, "${interface}", temp);
+    data.append("\n").append("ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/logic/").append(module_name).append(")");
+    tools::stringReplase(data, "\r", "");
+    cmake_manager.open(cmake_manager_file.c_str(), true);
+    cmake_manager << tlib::cdata((void *)data.c_str(), data.size());
 
     return 0;
 }

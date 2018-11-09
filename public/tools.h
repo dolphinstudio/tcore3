@@ -77,6 +77,8 @@ namespace tools {
 
         bool exists(const std::string & path);
         bool mkdir(const char * path);
+        bool deldir(const char * path);
+        bool delfile(const char * path);
 
         typedef std::vector<std::string> opaths, onames;
         bool getfiles(const char * dir, const char * ex, OUT opaths & paths, OUT onames & names, OUT s32 & count);

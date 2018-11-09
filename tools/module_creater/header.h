@@ -14,14 +14,21 @@ extern std::string g_out_path;
 
 inline void parse(int argc, const char ** argv) {
     for (int i = 1; i < argc; ++i) {
-        tassert(strncmp(argv[i], "--", 2) == 0, "invalid argv %s", argv[i]);
-
-        const char * start = argv[i] + 2;
-        const char * equal = strstr(start, "=");
-        tassert(equal != nullptr, "invalid argv %s", argv[i]);
-        std::string name(start, equal);
-        std::string val(equal + 1);
-        g_input_args[name] = val;
+        if (strncmp(argv[i], "--", 2) == 0) {
+            const char * start = argv[i] + 2;
+            const char * equal = strstr(start, "=");
+            if (equal != nullptr) {
+                std::string name(start, equal);
+                std::string val(equal + 1);
+                g_input_args[name] = val;
+            }
+            else if (strlen(argv[i]) > 2) {
+                g_input_args[argv[i] + 2] = "";
+            }
+        }
+        else {
+            //errorlog
+        }
     }
 }
 

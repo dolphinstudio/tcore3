@@ -38,6 +38,19 @@ namespace tools {
             return ::CreateDirectory(path, 0);
         }
 
+        bool deldir(const char * path) {
+            if (::PathIsDirectory(path)) {
+                ::RemoveDirectory(path);
+                return true;
+            }
+
+            return false;
+        }
+
+        bool delfile(const char * path) {
+            return remove(path) == 0;
+        }
+
         bool getfiles(const char * dicpath, const char * extension, OUT opaths & paths, OUT onames & names, OUT s32 & count) {
             WIN32_FIND_DATA finder;
             HANDLE error;
